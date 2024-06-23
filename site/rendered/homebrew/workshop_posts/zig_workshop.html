@@ -1,0 +1,381 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zig Workshop</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Zig Workshop" />
+  <meta property="og:description" content="Follow along article to the Zig workshop" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="Follow along article to the Zig workshop">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            
+            <h2 id="what-is-zig">What is Zig?</h2>
+<p>Zig is a simple systems programming launguage. It allows you to directly access the memory and the hardware (much like C does).</p>
+<p>In fact, Zig aims to be a &quot;better C&quot; by fixing many of the problems it has. We will be exploring these problems and how Zig fixes them.</p>
+<p>Zig is still in its early stages despite being in development since 2016. It is yet to have its 1.0 release, which is expected to come out some time around 2025-2026.
+This just goes to show the amount of effort it takes to create something beautiful, like Zig.</p>
+<h2 id="who-uses-it">Who uses it?</h2>
+<ul>
+<li>Uber's Go services have a little bit of Zig in them. And they heavily use toolchain written in Zig to compile the Go services.</li>
+<li>Bun is a javascript runtime that is blazingly fast. It is written entirely in Zig!</li>
+<li>Tigerbeetle is a database written in Zig. It is ridiculously fast and has an incredible storage fault model.</li>
+<li>Mach is a game engine and graphics toolkit written in Zig.</li>
+</ul>
+<h2 id="what-well-do-in-this-workshop">What we'll do in this workshop</h2>
+<ul>
+<li>Learn how to read / write basic Zig programs</li>
+<li>Learn about some pitfalls of C, and how Zig fixes them</li>
+<li>Develop an appreciation for modern programming (as opposed to C)</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://ziglang.org/documentation/master/">Official documentation</a>: Great and concise documentation. You might want to ctrl+f through it for quick reference.</li>
+<li><a href="https://ziglearn.org/">ziglearn</a>: Unofficial, but great introduction to the language for people who already know the basics of programming.</li>
+<li><a href="https://github.com/ratfactor/ziglings/">ziglings</a>: Super fun exercises to learn zig practically, one smol step at a time.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>The Zig toolchain allows you to compile / test / run Zig programs.</p>
+<p>If you're on Linux (or *nix), you could install <code>zig</code> via your package manager. This will not give you the latest version of Zig, but is perfect for our purposes.</p>
+<p>If you're on Windows or if you want the latest version of Zig (regardless of your platform), you can download it from <a href="https://ziglang.org/download/">here</a>. Simply click on the link appropriate for your platform. Extract the downloaded archive, and add the extracted folder to PATH.</p>
+<p>If you're unsure about how to add a folder to PATH, you can look up how to do so for your platform (ie Windows, Linux etc)</p>
+<p>Once this is done, run <code>zig version</code> in a terminal. If you're greeted with a version number, Zig has successfully been installed on your system. If not, feel free to reach out to us, and we'll help fix your issues.</p>
+<h2 id="hello-world">Hello World!</h2>
+<p>Hello World in Zig:</p>
+<pre><code class="language-zig">// This is a comment!
+
+// import the standard library, which contains functions
+// that will let us print to the screen, among many other things.
+const std = @import(&quot;std&quot;);
+
+// main function of our program. Every program needs one.
+pub fn main() void {
+    // print Hello World!
+    std.debug.print(&quot;Hello world!\n&quot;, .{});
+}
+</code></pre>
+<p>Explanation:</p>
+<ul>
+<li><code>std</code> is a variable that refers to the standard library. All the functions present in the standard library can be accessed via <code>std</code>.</li>
+<li><code>pub</code> stands for &quot;public.&quot; This makes the function visible outside of the current file. It is necessary for the main function because your system needs to call it.</li>
+<li><code>fn</code> is the keyword used to create functions. <code>pub fn</code> is used to create a public function.</li>
+<li>The name of our function is <code>main</code>, and it takes no arguments (as indicated by the empty <code>()</code>). This is very similar to most programming languages.</li>
+<li>In Zig, the return type of the function is written <em>after</em> the name of the function. In this case, our <code>main</code> function doesn't return anything, so we use <code>void</code>.</li>
+<li><code>std.debug.print()</code> is just one of the many ways in which you can print text to the screen. We use it here because it is the simplest.</li>
+</ul>
+<h2 id="features-of-zig">Features of Zig</h2>
+<p>In Zig, many of the basic programming constructs like if statements, loops, function calls etc are written almost exactly in the same way as in languages like C.</p>
+<p>This is where the resources we mentioned earlier help out. Need to write a for loop? Open up the official documentation and ctrl+f for &quot;for loop.&quot; It's that easy :D</p>
+<p>You will be made familiar with many such constructs today, but the main aim is to introduce concepts that are not typically seen in other languages.</p>
+<h3 id="dividing-two-numbers">Dividing two numbers</h3>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+// div takes two arguments.
+// x, which is an unsigned 8 bit integer.
+// y, which is an unsigned 8 bit integer.
+// it returns a single unsigned 8 bit integer value.
+fn div(x: u8, y: u8) u8 {
+    return x / y;
+}
+
+pub fn main() void {
+    // the var keyword is used to declare variables.
+    // const can also be used (like with const std) but
+    // variables created with const cannot be modified once created.
+    var q = div(15, 5);
+    std.debug.print(&quot;{d}\n&quot;, .{q});
+}
+</code></pre>
+<p>This seems pretty straightforward, right? Trust me, you'll get used to the syntax soon enough :D</p>
+<h4 id="errors">Errors</h4>
+<p>What happens when you try to divide by 0? Let's find out!
+Replace the call to div with the divisor set to 0, and run the program. Your program will crash! To prevent this, let's generate a custom error in the div function that is returned when the divisor is 0.</p>
+<pre><code class="language-zig">// !u8 is an &quot;error union&quot; type. It indicates that the
+// return value could either be an error, or a u8 value.
+fn div(x: u8, y: u8) !u8 {
+    if (y == 0) {
+        return error.MyError; // you can create your own errors by using error.YourErrorName
+    } else {
+        return x / y;
+    }
+}
+</code></pre>
+<p>This error must be caught in the main function! In order to do so, we use the <code>catch</code> keyword.</p>
+<pre><code class="language-zig">// q will be equal to the result of the div function if there are no errors.
+// If the div function returns an error, then the value of q will be the value
+// succeeding the catch keyword. 0 in this case.
+var q = div(15, 0) catch 0;
+</code></pre>
+<p>Let's take this one step further!</p>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+// div function definition here
+
+// a + (b / c)
+fn func(a: u8, b: u8, c: u8) !u8 {
+    // The &quot;try&quot; keyword propagates the error so that
+    // you won't have to deal with it everywhere.
+    return a + try div(b, c);
+}
+
+pub fn main() void {
+    var q = func(5, 15, 3) catch 0;
+    std.debug.print(&quot;{d}\n&quot;, .{q});
+}
+</code></pre>
+<h4 id="defer">Defer</h4>
+<p>The defer keyword allows you to execute code at the <em>end</em> of the current scope.</p>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+pub fn main() void {
+    std.debug.print(&quot;Start of main function!\n&quot;, .{});
+    defer std.debug.print(&quot;End of main function!\n&quot;, .{});
+
+    // lots of code here
+    var x: u8 = 5;
+    std.debug.print(&quot;The value of x is {d}\n&quot;, .{x});
+    // lots of code here
+}
+</code></pre>
+<p>This is particularly useful for keeping the allocation and deallocation of memory in two consecutive lines, which leads to a lesser chance of forgetting to deallocate.</p>
+<h2 id="generics-in-zig">Generics in Zig</h2>
+<p>Generics in programming is when you reuse the same code for values of different types. Let's explore generics in Zig with the example of vectors.</p>
+<p>For the sake of this example, let's use 2D vectors with an <code>x</code> and a <code>y</code> component. We first create a Vector struct with two <code>f32</code> members (<code>x</code> and <code>y</code>). <code>f32</code> is the 32 bit (4 byte) floating point type in Zig. Note that unlike the integer types, floating point types can't have arbitrary bit width in Zig. They must either be <code>f32</code> or <code>f64</code>.</p>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+// Vector is a struct with 2 members.
+// &quot;x&quot;, which is a 32 bit float and &quot;y&quot;, which is also a 32 bit float.
+const Vector = struct {
+    x: f32,
+    y: f32,
+};
+
+pub fn main() void {
+    // Initializing the Vector struct.
+    var v = Vector{ .x = 5.5, .y = 6.6 };
+
+    // Print the vector
+    std.debug.print(&quot;{}, {}\n&quot;, .{ v.x, v.y });
+}
+</code></pre>
+<p>This code works great! We can create multiple vectors easily by using the Vector struct. But... what if you want a vector with <code>f64</code>'s instead of <code>f32</code>'s? What if you want a vector of integers? Will you rewrite your Vector class for every such scenario?</p>
+<h3 id="functions-accepting-and-returning-types">Functions accepting and returning types</h3>
+<p>In Zig, types are first class values during compile time! What this means is that while your code is being compiled, you can execute certain functions that accept types as a parameter, and return types as the return value. Just as if they were regular values. This is what that looks like:</p>
+<pre><code class="language-zig">// A function that returns an integer type of
+// twice the bit width of the given integer type.
+fn DoubleBitInt(comptime T: type) type {
+    if (T == u8) return u16;
+    if (T == u16) return u32;
+    if (T == u32) return u64;
+    if (T == u64) return u128;
+}
+
+pub fn main() void {
+    // x is a u16 variable with the value 5.
+    var x: DoubleBitInt(u8) = 5;
+
+    // In Zig, all variables must be used. If
+    // a variable is not used, it must be assigned
+    // to &quot;_&quot;, which gets rid of the compiler error.
+    _ = x;
+}
+</code></pre>
+<p>If we can return primitive types such as integers, then what stops us from returning entire structs? Nothing!</p>
+<p>The way in which generics work in Zig is, we create a function that accepts some information about the required type. The function then creates a struct according to the requirement and returns it. Of course, all of this happens during the compilation of your program itself</p>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+// &quot;Vector&quot; is now a function that returns the required vector type.
+// The return type is &quot;type&quot;, which indicates that the value returned
+// by this function is a type (such as u8, f32, a struct etc)
+fn Vector() type {
+    const V = struct {
+        x: f32,
+        y: f32,
+    };
+    return V;
+}
+
+pub fn main() void {
+    // Call the Vector function this time
+    var v = Vector(){ .x = 5.5, .y = 6.6 };
+    std.debug.print(&quot;{}, {}\n&quot;, .{ v.x, v.y });
+}
+</code></pre>
+<p>Cool! But where are my generics? Our <code>Vector()</code> function still returns a vector type that can only hold <code>f32</code>'s. This is where the beauty of Zig kicks in :D</p>
+<p>Now that Vector is a function, we can simply pass the type of the elements that we want into it, and have it construct the required vector struct like so:</p>
+<pre><code class="language-zig">const std = @import(&quot;std&quot;);
+
+// The comptime keyword is used to indicate that this argument is passed to
+// this function durint compile time, and not during run time as is usually the case.
+// This is necessary because types are not recognized as values which you can pass to functions during run time.
+fn Vector(comptime T: type) type {
+    // Directly return a struct instead of creating
+    // a variable and returning the variable.
+    return struct {
+        x: T, // This is the type passed in to the function by the user
+        y: T, // Same here
+    };
+}
+
+pub fn main() void {
+    // A vector of f32s
+    var v = Vector(f32){ .x = 5.5, .y = 6.6 };
+    std.debug.print(&quot;{}, {}\n&quot;, .{ v.x, v.y });
+
+    // A vector of u8s
+    var w = Vector(u8){ .x = 5, .y = 6 };
+    std.debug.print(&quot;{}, {}\n&quot;, .{ w.x, w.y });
+}
+</code></pre>
+<p>This is a very, <em>very</em> powerful feature that enables you to write very reusable code.</p>
+<h2 id="zig-as-a-cc-compiler">Zig as a C/C++ compiler</h2>
+<p>Have some C/C++ code lying around? Try compiling it with <code>zig cc file_name.c</code> or <code>zig c++ file_name.cpp</code>. <code>zig cc</code> and <code>zig c++</code> are drop in replacements for <code>gcc</code> and <code>g++</code> respectively, and take almost identical arguments.</p>
+<p>They produce much smaller binaries in most cases, and are compiled with lots of safety checking enabled by default. What's more, they are also cross compilers by default!
+This means that you can run the compiler on Linux, but build a binary for Windows (for example), by using the <code>-target</code> command line argument: <code>zig cc file_name.c -target x86_64-windows-gnu</code>. It's just that simple!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Zig brings some very profound ideas together into one language. Ideas like comptime, treating errors and types as first class values etc are precisely the features of modern programming that help write safer, and easy to understand code with little to no runtime overhead.</p>
+<p>There are SO many more awesome Zig features that we couldn't cover today because of time constraints. Look Zig up! (Re)write some programs in Zig! It's a very fun language to code in and is becoming my favorite very fast.</p>
+<p>Hope you learnt something new today!</p>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

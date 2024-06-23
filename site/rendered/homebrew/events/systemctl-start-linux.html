@@ -1,0 +1,204 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>systemctl start linux</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="systemctl start linux" />
+  <meta property="og:description" content="A Hands-on workshop on Linux and FOSS Software!" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="A Hands-on workshop on Linux and FOSS Software!">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            <div class="post-description">
+                <h1>systemctl start linux</h1>
+                <div class="authors-paceholder">
+                    <p>
+                        Published on 2022-04-07
+                        
+                        
+                        HSP
+                        
+                    </p>
+                </div>
+                <div class="tags-paceholder">
+                    
+                    <div class="tag">
+                        <a href="/tags/FOSS.html">FOSS</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/Linux.html">Linux</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/Homebrew.html">Homebrew</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <figure>
+<img src="/static/images/systemctl-start-linux/post-preview.png" alt="">
+</figure>
+<p>Why do those who use Linux swear by it so much?
+What's so special about Linux that enables it to power most of the world's servers?
+What does infinite customizability really mean?</p>
+<p><code>systemctl start linux</code> is a beginner-oriented, hands-on workshop by Hackerspace PESUECC that aims to answer these questions for you. Join us, as we guide you on your Linux journey.</p>
+<p><strong>This workshop will be held on the 18th of April, 2022 from 4:00 to 6:00 PM at the Seminar Hall, PESU EC Campus.</strong></p>
+<section class="p-index_links_link">
+    <a href="https://forms.gle/PFmC8MZAB6uMArUW9" class="c-gradient-link">  Register Now! </a>
+</section>
+<p>We'll talk about, and have you experience -</p>
+<ol>
+<li>An Introduction to the Linux OS and bash commands to demonstrate its flexibility</li>
+<li>How is Linux beneficial from a FOSS Perspective?</li>
+<li>Hands-on session with bash, shell scripting and common command-line tools</li>
+<li>A brief Introduction to Vim</li>
+</ol>
+<p>In addition to this, the Mentor Team at Hackerspace PESUECC, many of whom use Linux as their primary operating system, will exhibit their configurations and setups, and are available to answer your questions!</p>
+<p>You can read more about the event here - <a href="https://hsp-ec.xyz/events/systemctl-start-linux">https://hsp-ec.xyz/events/systemctl-start-linux</a>
+Register here directly - <a href="https://forms.gle/PFmC8MZAB6uMArUW9">https://forms.gle/PFmC8MZAB6uMArUW9</a></p>
+<p>See you there!</p>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

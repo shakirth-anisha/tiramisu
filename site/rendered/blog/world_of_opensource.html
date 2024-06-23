@@ -1,0 +1,210 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The World of Open Source!</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The World of Open Source!" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            <div class="post-description">
+                <h1>The World of Open Source!</h1>
+                <div class="authors-paceholder">
+                    <p>
+                        Published on 2022-03-03
+                        
+                        
+                        HSP
+                        
+                    </p>
+                </div>
+                <div class="tags-paceholder">
+                    
+                    <div class="tag">
+                        <a href="/tags/FOSS.html">FOSS</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/Homebrew.html">Homebrew</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#what-is-open-source">What is open source?</a></li>
+<li>
+<a href="#why-open-source">Why open source?</a></li>
+<li>
+<a href="#what-can-you-do-to-contribute">What can you do to contribute?</a></li>
+</ul>
+<p>If you are a tech enthusiast, you must've come across this common term, &quot;open source&quot;. Most usually, open source software are alternatives to paid software to most students and thrifty enthusiasts. But what actually is open source and why is it important to understand it? Let's find out!</p>
+<h2 id="what-is-open-source">What is open source? <a class="anchor" href="#what-is-open-source">#</a></h2>
+<p>Imagine a world where you could have endless number of contributors to work on your application and improve it, quite the world, right!? You do not need to imagine it since that is what open source is, simply put. Open source is a form of development of any tool and/or service, while sharing the complete source code and legal rights to access and use your work for free. This gives the users a chance to see the transparency of the tool or service that they use and more importantly, it gives other developers enough information to potentially improve upon the application.</p>
+<p>As you might already know, Linux, one of the most popular operating systems, is open source. This means that anyone with the knowledge of C programming can contribute to Linux!</p>
+<h2 id="why-open-source">Why open source? <a class="anchor" href="#why-open-source">#</a></h2>
+<p>Open source software has one of, if not, the biggest communities when compared to proprietary software. This ensures that a user or a developer can get support and have a place to discuss the issues that they encounter with several other users and developers. This feedback helps to improve the software even more since the developers and the users are so closely linked.</p>
+<p>We all know how expensive proprietary software can be. Yes, they should be bought by people who know how to use them and can get the most out of them. But, what about people who are trying to learn a certain skill like photo editing, music production, coding etc. without spending a lot of money on software? Open source software is the solution to that answer! For every proprietary software out there, there is a free and open source software present. They are by no means inferior to the proprietary counterparts but are even better in most scenarios.</p>
+<p>Here is a small list of open source alternatives to popular proprietary software:</p>
+<ul>
+<li><a href="https://www.gimp.org/">GIMP</a> - an alternative to Photoshop.</li>
+<li><a href="https://www.gnu.org/software/octave/index">Octave</a> - an alternative to MATLAB.</li>
+<li><a href="https://www.libreoffice.org/discover/libreoffice/">LibreOffice</a> - an alternative to MS Office tools.</li>
+<li><a href="https://www.7-zip.org/">7-Zip</a> - an alternative to WinRAR.</li>
+<li><a href="https://www.audacityteam.org/">Audacity</a> - a FOS audio editing tool.</li>
+<li><a href="https://pop.system76.com/">Pop!_OS</a> - a Debian-based Linux distribution alternative to Windows.</li>
+</ul>
+<h2 id="what-can-you-do-to-contribute">What can you do to contribute? <a class="anchor" href="#what-can-you-do-to-contribute">#</a></h2>
+<p>If all the above information has impressed you, take a step forward and contribute to open source! Homebrew's main objective is to nurture FOSS development in budding developers. If you are interested to join our community and learn more about open source contributions check out the links provided below!</p>
+<ul>
+<li><a href="https://sharp-wright-d62960.netlify.app/getstarted/">Join Homebrew!</a></li>
+<li><a href="https://www.rowjee.com/blog/git_up_and_running">How to use Git</a></li>
+<li><a href="https://www.freecodecamp.org/">FOSS development courses</a></li>
+</ul>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

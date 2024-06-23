@@ -1,0 +1,12 @@
+{{define "homebrew_header"}}
+<!-- If the template for a particular url does not exist(posts.html), setting it to the specific page template data -->
+{{ $PageData := index .DeepDataMerge.Templates .PageURL }} {{if eq $PageData nil
+}} {{ $PageData = .TemplateData }} {{end}}
+
+<header>
+    <nav>
+        <a href="/collections/workshops.html">workshops</a>
+        <a href="/">HSP</a>
+    </nav>
+</header>
+{{template "search" .}} {{end}}

@@ -1,0 +1,376 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federated Learning</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Federated Learning" />
+  <meta property="og:description" content=" An introduction to Federated Learning, covering it&#39;s mechanisms, benefits, challenges, applications and future potential, all while maintaining data privacy and efficiency" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content=" An introduction to Federated Learning, covering it&#39;s mechanisms, benefits, challenges, applications and future potential, all while maintaining data privacy and efficiency">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            <div class="post-description">
+                <h1>Federated Learning</h1>
+                <div class="authors-paceholder">
+                    <p>
+                        Published on 2024-06-09
+                        
+                        
+                        HSP
+                        
+                    </p>
+                </div>
+                <div class="tags-paceholder">
+                    
+                    <div class="tag">
+                        <a href="/tags/machinelearning.html">machinelearning</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/federatedlearning.html">federatedlearning</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#introduction-to-federated-learning">Introduction to Federated Learning</a></li>
+<li>
+<a href="#how-federated-learning-works">How Federated Learning Works</a><ul>
+<li>
+<a href="#federated-averaging">Federated Averaging</a></li>
+</ul>
+</li>
+<li>
+<a href="#advantages-of-federated-learning">Advantages of Federated Learning</a><ul>
+<li>
+<a href="#challenges-and-limitations">Challenges and Limitations</a></li>
+</ul>
+</li>
+<li>
+<a href="#applications-of-federated-learning">Applications of Federated Learning</a></li>
+<li>
+<a href="#future-of-federated-learning">Future of Federated Learning</a></li>
+<li>
+<a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction-to-federated-learning">Introduction to Federated Learning <a class="anchor" href="#introduction-to-federated-learning">#</a></h2>
+<p>Federated Learning is an approach to train the machine learning models across multiple decentralized devices or servers that hold local data samples. Instead of sharing sensitive data, what each device does is - it trains a model locally and only shares the learned parameters (like gradients or weights) with a central server. This ensures data privacy and efficient model training across a distributed network.</p>
+<figure>
+<img src="https://cdn.aglty.io/fortanix/blog/data-privacy.jpg" alt="Data Privacy Meme">
+</figure>
+<blockquote>
+<p><strong>Fun Fact:</strong> Federated Learning was first introduced by Google in 2016 to improve the predictive text on smartphones without compromising user privacy.</p>
+</blockquote>
+<p>In today's digital age, data privacy is more important than ever. With massive amounts of data generated daily, ensuring that personal information remains confidential is crucial. Federated Learning addresses this need by enabling collaborative model training without sharing raw data.</p>
+<h2 id="how-federated-learning-works">How Federated Learning Works <a class="anchor" href="#how-federated-learning-works">#</a></h2>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Local Devices:</strong> Train the model using local data, ensuring that sensitive information remains on the device.</li>
+<li><strong>Central Server:</strong> Aggregates updates without accessing local data, combining the knowledge from each device to improve the overall model.</li>
+<li><strong>Communication Protocols:</strong> Ensure secure transmission of updates, preventing any leakage of sensitive information during the process.</li>
+</ul>
+<p>Let's break down the process:</p>
+<p>Federated Learning (FL) enables collaborative model training across multiple devices while preserving data privacy. SO, let us now explore the detailed mechanics and the rationale behind each step involved in FL.<br>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20230717153929/Federated-Learning-(1).png" alt="Federated Learning Diagram"></p>
+<ol>
+<li><strong>Model Initialization</strong>:
+A global model is initialized on the central server. This model is typically a neural network with a defined architecture but with untrained weights.The global model is created based on the desired task. Finally in this stage, the server then distributes this model to all participating devices, ensuring each device starts with the same initial parameters.</li>
+</ol>
+<pre><code class="language-python"># Initialize the global model
+global_model = initialize_model()
+# Distribute the global model to all devices
+for device in devices:
+    send_model_to_device(global_model, device)
+</code></pre>
+<ol start="2">
+<li><strong>Local Training</strong>:
+Each device trains the model on its local dataset. This step allows the model to learn from the data available on the device.</li>
+</ol>
+<pre><code class="language-python"># Local training function
+def train_locally(model, data):
+    # Training loop
+    for epoch in range(local_epochs):
+        for batch in data:
+            # Forward pass
+            predictions = model.forward(batch.inputs)
+            # Compute loss
+            loss = compute_loss(predictions, batch.labels)
+            # Backward pass and update weights
+            model.backward(loss)
+            model.update_weights()
+    return model.get_weights()
+
+# Train model locally on each device
+local_updates = []
+for device in devices:
+    local_data = load_data(device)
+    local_weights = train_locally(global_model, local_data)
+    local_updates.append(local_weights)
+</code></pre>
+<ol start="3">
+<li><strong>Model Updates</strong>:
+Devices send their model updates (typically the gradients or weight changes) to the central server instead of the raw data. The updates contain only the changes in the model's weights, which are much smaller in size compared to the raw data. This step ensures data privacy and reduces the risk of sensitive data exposure.</li>
+</ol>
+<pre><code class="language-python"># Send local model updates to the central server
+for update in local_updates:
+    send_update_to_server(update)
+</code></pre>
+<ol start="4">
+<li><strong>Aggregation</strong>:
+The central server aggregates the received updates using techniques like Federated Averaging to create an improved global model. Federated Averaging (FedAvg): This is the most common aggregation method where the server averages the weights from all the updates. Averaging the weights is effective because it combines the learning from diverse data distributions across devices, leading to a more generalized model.</li>
+</ol>
+<pre><code class="language-python"># Federated Averaging function
+def federated_averaging(global_model, local_updates):
+    num_devices = len(local_updates)
+    new_weights = [0] * len(global_model.weights)
+
+    for update in local_updates:
+        for i, weight in enumerate(update):
+            new_weights[i] += weight / num_devices
+
+    global_model.set_weights(new_weights)
+    return global_model
+
+# Aggregate the local updates to update the global model
+global_model = federated_averaging(global_model, local_updates)
+</code></pre>
+<ol start="5">
+<li><strong>Iteration</strong>:
+Steps 2-4 are repeated for multiple rounds until the model converges or reaches the desired level of accuracy. Iterative training allows the model to improve incrementally, benefiting from new data and continual learning. Each round of training and aggregation reduces the global model's loss, gradually enhancing its performance.</li>
+</ol>
+<pre><code class="language-python"># Main federated learning loop
+def federated_learning(server_model, devices, num_rounds):
+    for round in range(num_rounds):
+        local_updates = []
+        for device in devices:
+            local_model = train_locally(server_model, device.data)
+            local_updates.append(local_model.get_weights())
+        server_model = federated_averaging(server_model, local_updates)
+    return server_model
+
+# Execute the federated learning process
+global_model = federated_learning(global_model, devices, num_rounds)
+</code></pre>
+<h3 id="federated-averaging">Federated Averaging <a class="anchor" href="#federated-averaging">#</a></h3>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Centralized_federated_learning_protocol.png" alt="Federated Learning Diagram">
+</figure>
+<p>This is a common algorithm that is used in Federated Learning. The updates from each device are averaged to update the global model, ensuring that each device contributes to the learning process. But why does this averaging work and what does it actually do?</p>
+<ol>
+<li><strong>Linear Combination of Functions</strong>:
+The weights of a neural network can be seen as coefficients of a very high-dimensional function. By averaging the weights, we effectively create a new function that is a linear combination of the individual functions trained on each device's data. This linear combination often captures the general trend of the data distribution better than any single model trained on local data.</li>
+<li><strong>Convergence and Stability</strong>:
+Averaging helps in smoothing out the noise in the gradient updates. Each device's data might have some noise, but when averaged across many devices, the noise tends to cancel out, leading to more stable and reliable updates. This is particularly important in non-IID (Independent and Identically Distributed) settings, where data distributions can vary significantly across devices.</li>
+<li><strong>Generalization</strong>:
+By aggregating updates from multiple devices, the global model is exposed to a more diverse set of data points, which improves its ability to generalize to unseen data. This diversity helps in creating a more robust model that performs well across different data distributions.</li>
+</ol>
+<p>Here's a sample pseudo-code for Federated Averaging:</p>
+<pre><code class="language-python"># Sample pseudo-code for Federated Averaging
+def federated_averaging(global_model, local_updates):
+    num_devices = len(local_updates)
+    new_weights = [0] * len(global_model.weights)
+
+    for update in local_updates:
+        for i, weight in enumerate(update.weights):
+            new_weights[i] += weight / num_devices
+
+    global_model.set_weights(new_weights)
+    return global_model
+</code></pre>
+<h2 id="advantages-of-federated-learning">Advantages of Federated Learning <a class="anchor" href="#advantages-of-federated-learning">#</a></h2>
+<p>Federated Learning brings several benefits to the table, making it a revolutionary approach in the field of machine learning:</p>
+<ul>
+<li><strong>Data Privacy:</strong> Sensitive data never leaves the device, ensuring that personal information remains confidential.</li>
+<li><strong>Reduced Latency:</strong> Local training minimizes delays, making the process more efficient.</li>
+<li><strong>Personalized Models:</strong> Models can be customized for individual devices, improving performance and user satisfaction.</li>
+<li><strong>Scalability:</strong> Federated Learning can easily scale to millions of devices, making it ideal for applications like mobile phones and IoT devices.</li>
+<li><strong>Energy Efficiency:</strong> By leveraging local computation, Federated Learning can reduce the energy consumption associated with centralized data processing.</li>
+</ul>
+<h3 id="challenges-and-limitations">Challenges and Limitations <a class="anchor" href="#challenges-and-limitations">#</a></h3>
+<p>However, Federated Learning has a couple of challenges which is quite note-worthy. A few of them are:</p>
+<ul>
+<li><strong>Data Heterogeneity:</strong> Variability in data quality and quantity across devices can affect the model's performance. Different devices may have different data distributions, making it difficult to create a one-size-fits-all model.</li>
+<li><strong>Communication Overhead:</strong> Frequent updates can be bandwidth-intensive, especially in environments with limited connectivity. Ensuring efficient communication protocols is essential to mitigate this issue.</li>
+<li><strong>Security Risks:</strong> Potential vulnerabilities in the aggregation process can pose security risks. Ensuring secure and robust aggregation methods is crucial to prevent malicious attacks.</li>
+<li><strong>Device Resource Constraints:</strong> Limited computational and storage resources on devices can hinder the training process. Optimizing the training process to accommodate these constraints is necessary.</li>
+</ul>
+<h2 id="applications-of-federated-learning">Applications of Federated Learning <a class="anchor" href="#applications-of-federated-learning">#</a></h2>
+<p>Federated Learning is making waves in various industries, transforming how data-driven decisions are made:</p>
+<ul>
+<li><strong>Healthcare:</strong> Enhancing diagnostic models without compromising patient data. For instance, hospitals can collaboratively train models to detect diseases like cancer without sharing sensitive patient records.</li>
+<li><strong>Finance:</strong> Improving fraud detection while keeping financial data secure. Banks can collaborate to develop better fraud detection algorithms without exposing customer data.</li>
+<li><strong>IoT:</strong> Optimizing smart home devices through collective learning. Smart devices can improve their performance by learning from each other without sharing user data.</li>
+<li><strong>Telecommunications:</strong> Enhancing network optimization by analyzing user behavior patterns. Telecom companies can improve network quality by understanding usage patterns without accessing individual user data.</li>
+<li><strong>Autonomous Vehicles:</strong> Improving safety features through collaborative learning. Autonomous vehicles can share insights to enhance their decision-making capabilities without sharing raw data.</li>
+</ul>
+<figure>
+<img src="https://blogs.nvidia.com/wp-content/uploads/2019/10/federated_learning_animation_still_white.png" alt="Healthcare FL">
+</figure>
+<h2 id="future-of-federated-learning">Future of Federated Learning <a class="anchor" href="#future-of-federated-learning">#</a></h2>
+<p>The future of Federated Learning is bright and promising. As technology advances, FL could revolutionize industries by ensuring privacy and efficiency in AI applications.</p>
+<ul>
+<li><strong>Enhanced Privacy Mechanisms:</strong> Future developments could focus on improving privacy mechanisms, making Federated Learning even more secure.</li>
+<li><strong>Better Communication Protocols:</strong> Innovations in communication protocols could reduce the bandwidth required for model updates, making the process more efficient.</li>
+<li><strong>Integration with Edge Computing:</strong> Combining Federated Learning with edge computing could further enhance data privacy and reduce latency.</li>
+<li><strong>Broader Industry Adoption:</strong> As more industries recognize the benefits of Federated Learning, its adoption is likely to increase, leading to more robust and secure AI applications.</li>
+</ul>
+<figure>
+<img src="https://media.licdn.com/dms/image/D4E10AQEnr19WqWyLwA/image-shrink_1280/0/1699373941278?e=2147483647&amp;v=beta&amp;t=CwWNSv21gOc5ZDdtq44tMDnv5nF_jfp6Ji7NmCC3sNQ" alt="Future AI Meme">
+</figure>
+<h2 id="conclusion">Conclusion <a class="anchor" href="#conclusion">#</a></h2>
+<p>Federated Learning is a game-changer in the world of AI, offering a perfect blend of privacy and efficiency. As more industries adopt this technology, we're likely to see a significant impact on how data-driven decisions are made. From healthcare to finance to IoT, the potential applications are vast and varied.</p>
+<h2 id ="next-steps">Next Steps and Resources</h2>
+<br/>
+<ul>
+<li>An amazing Github repo with super cool resources : <a href="https://github.com/weimingwill/awesome-federated-learning">Federated Learning</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=X8YYWunttOY&amp;pp=ygUSZmVkZXJhdGVkIGxlYXJuaW5n">Google Cloud Tech : What is Federated Learning</a></li>
+<li><a href="https://www.youtube.com/watch?v=89BGjQYA0uE&amp;pp=ygUSZmVkZXJhdGVkIGxlYXJuaW5n">Federated Learning : Machine Learning on Decentralized Data (Google I/O'19)</a></li>
+<li><a href="https://www.youtube.com/watch?v=j5e7bZLTMH0&amp;pp=ygUSZmVkZXJhdGVkIGxlYXJuaW5n">Federated Learning at Scale, EPFL</a></li>
+<li>Go through these resources throughly and ofc, <code>BUILD</code> folks!</li>
+</ul>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

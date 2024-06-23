@@ -1,0 +1,203 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kotlin ?</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kotlin ?" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            
+            <p><strong>Java</strong>, alongside a few other frameworks has been the industry standard for building applications that run on multiple platforms - Mobile, PC's, Web Applications and loads more. But, something changed at <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjo2abj8eL2AhVPldgFHRJfAmYQwqsBegQIFRAB&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DCNLVZjBE08g&amp;usg=AOvVaw15-zzYHlOWBwEM2BexVhTH"><strong>Google I/O 2017</strong></a>; <strong>Kotlin</strong> was made the officially supported language for Android App Dev.</p>
+<figure>
+<img src="/images/KotlinvsJava.png" alt="Kotlin vs Java">
+</figure>
+<p>Put on your reading glasses, as we take a deep dive into why Kotlin makes your <em>App Dev</em> experience smooooooth.</p>
+<h2 id="-null-safety-"><em>Null Safety</em></h2>
+<p>Let's start off by talking about one of the most infuriated issues Java developers were concerned with : <strong><em>Null Pointer Exceptions</em></strong> <em>- Referencing an object with a null value results in a Null Pointer Exception</em>. All types are <em>Nullable</em> in Kotlin by default, which translates to no <em>Null Pointer Exceptions</em> !</p>
+<p><em>Tip: In order to assign a null value to a variable in Kotlin, add a '?' after the data type.</em></p>
+<pre><code>val a: Int? = null
+</code></pre>
+<h2 id="-concise-code-"><em>Concise Code</em></h2>
+<p>Kotlin drastically reduces the need for <strong><em>Boilerplate Code</em></strong> <em>- Sections of code that are repeated in multiple places with little/no variation.</em> This makes your experience a lot less tedious. The best example of code conciseness in Kotlin can be observed in <strong>Classes</strong>.
+<br/><br/></p>
+<h2 id="-inline-and-extension-functions-"><em>Inline and Extension Functions</em></h2>
+<p>Java does provide support for <strong><em>Inline Functions</em></strong> - <em>Functions which are expanded in line, when the function is called</em> (compiler expands using the <em>final</em> method). On the other hand, Kotlin provides in-built support for Inline functions.</p>
+<p><strong><em>Extension Functions</em></strong> - <em>The ability to extend classes with new functions without inheritance or decorators</em>. These are a tad bit more important and usable, especially when you come from languages such as C#. Sadly, these aren't available in Java.</p>
+<p><em>Tip: To create an extension function for a previously created class, do the following:</em></p>
+<pre><code>class homeBrew(){
+
+	fun fOSS(){
+		println(&quot;Welcome to your FOSS Home Ground&quot;)
+	}
+
+}
+
+fun homeBrew.entryChallenge(){
+
+	println(&quot;Complete the entry challenge to join us!&quot;)
+}
+</code></pre>
+<h2 id="-coroutines-"><em>Coroutines</em></h2>
+<p>Android is <strong><em>Single Threaded</em></strong> by default <em>- The calling thread is blocked until the operation is complete - the App's UI is completely frozen during this period</em> and we definitely don't want that happening do we ?
+The traditional solution to this in Java would be to create <em>Background Threads</em> for intensive work. But, creating multiple threads increases the complexity as well as chances of encountering errors in the code.</p>
+<p>Don't you worry, Kotlin has got you covered.</p>
+<p>Kotlin uses <strong><em><a href="https://developer.android.com/kotlin/coroutines?gclid=EAIaIQobChMIuZamgZPj9gIVz5lmAh19yguWEAAYASAAEgIZA_D_BwE&amp;gclsrc=aw.ds">Coroutines</a></em></strong> to manage intensive operations. The major advantage compared to Java threads is it's <strong><em>Stackless Architecture</em></strong> <em>- They demand lower memory usage compared to threads</em>. It also provides for the creation of <em>Non Blocking Asynchronous Code</em> which appears to be synchronous.
+<br/><br/></p>
+<h2 id="-100-interoperability-with-java-"><em>100% Interoperability with Java</em></h2>
+<p>Kotlin provides for complete interoperability with Java, which means you can use both Kotlin and Java code in the same project and they will compile perfectly. This also gives you the ability to move from Java to Kotlin on a project which you were previously working on.</p>
+<p><em>Tip: <a href="https://developer.android.com/studio">Android Studio</a> gives you the ability to convert Java Code to Kotlin or vice versa ! Simply paste Java/Kotlin code onto the IDE and click on the prompt to see the magic happen !!</em></p>
+<figure>
+<img src="/images/JavaKotlinInteroperability.png" alt="Java Kotlin Interoperability">
+</figure>
+<p><em>Pro Tip: Android Studio also gives you the ability to decompile Kotlin Code into Java. On the Menu Bar, navigate to <strong>Tools-&gt;Kotlin-&gt;Decompile Kotlin to Java</strong> and see the magic happen !</em></p>
+<figure>
+<img src="/images/DecompileToJava.png" alt="Decompile To Java">
+</figure>
+<p>Well, there are tons of other reasons as to why Kotlin should make it to your <em>Most Used Languages List</em>, but we'd like to call it an end here. <strong><em>Happy reading!</em></strong></p>
+<p><em>Posted by <a href="https://github.com/Manab784">Manab Kumar Biswas</a></em></p>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

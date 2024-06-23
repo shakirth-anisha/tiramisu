@@ -1,0 +1,242 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Concurrency at its best, It&#39;s Go time!</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="For Concurrency at its best, It&#39;s Go time!" />
+  <meta property="og:description" content="Concurrent execution has been a concept which has been going around for years but has it ever been THIS easy in the developer&#39;s side!?" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="Concurrent execution has been a concept which has been going around for years but has it ever been THIS easy in the developer&#39;s side!?">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            <div class="post-description">
+                <h1>For Concurrency at its best, It&#39;s Go time!</h1>
+                <div class="authors-paceholder">
+                    <p>
+                        Published on 2022-03-17
+                        
+                        
+                        HSP
+                        
+                    </p>
+                </div>
+                <div class="tags-paceholder">
+                    
+                    <div class="tag">
+                        <a href="/tags/golang.html">golang</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/concurrency.html">concurrency</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#goroutines">Goroutines</a></li>
+<li>
+<a href="#channels">Channels</a></li>
+</ul>
+<p>Well, I came across golang just recently as i needed the socket programming capabilities for my Networks Project. Curious to learn the langauge, I sat and grinded the fundamentals of Golang for two days which was very similar to that of C and Python and Java, until i saw the concurrency capabilities of this amazing langauge.</p>
+<p>Before we move further, lets understand what Concurrency is, both in Layman's terms and in definition form.</p>
+<p>Suppose Alice and Joe have the Sunday to themselves without their chaotic kids ruining the weekend and they want to enjoy their weekend and go out on a date!
+But the house is a mess, so Alice decides to finish her numerous chores and then enjoy the rest of the evening with her husband but unfortunately she cannot single-handedly finish all the chores by the evening, so Joe also starts helping her out and finish all the chores together one-by-one.</p>
+<p>What Joe and Alice decided to do to finish their chores before the evening, is exactly what <strong>Concurrency</strong> is!</p>
+<p>Now in a basic computer, procedural instruction execution occurs i.e one after another. For example, lets say that there are 5 instructions. Instead of executing one-by-one and wasting time, don't you think it would be better to execute all of the instructions at once?</p>
+<p>Well, what we can do is allot each of the five instructions to five processes and execute all processes in your computer at once. However, even process creation and execution is time consuming. And that my friends, is where <em>threads</em> come into the picture!</p>
+<p>Threads are smaller units in a process that inherit all the resources and features of a process and can execute said instructions in a more clean, fast and efficient way.</p>
+<p>So to sum it up, let's come up with definitions for threads and concurrency!
+<strong>Threads</strong>: Subunits of process which can handle individual sequential execution of a set of instructions concurrently with other threads within the same process.
+<strong>Concurrency</strong>: Out of order or partial inorder execution of multiple instruction sequences at the same time.</p>
+<p>Wokay! Now that we closed the basic, it time to move to concurrency with respect to golang!</p>
+<h1 id="goroutines">Goroutines <a class="anchor" href="#goroutines">#</a></h1>
+<p>Well so goroutines are basically the component of concurrent execution or the subfunctions executing concurrently in golang is called goroutines.</p>
+<p>Well, if you think about it goroutines it is nothing but normal functions, what makes it goroutines are the aspect of concurrent execution which can be achieved by appending the go keyword before the function call to execute it in a seperate thread along with other goroutines if any.</p>
+<p>Here is a code snippet for you to understand go routines better :-</p>
+<pre><code class="language-go">package main
+
+func fn(a int, b int){
+    fmt.Println(a+b)
+}
+func main(){
+    go fn(4,5)
+    fmt.Println(&quot;Hello&quot;)
+}
+</code></pre>
+<p>In the above example, without the concurrency aspect, fn function would be called and executed first and then the &quot;Hello&quot; message would have popped up sequentially.</p>
+<p>However due to the go keyword and respective goroutines, fn function and the <code>fmt.Println(&quot;Hello&quot;)</code> command would execute simulatenously.</p>
+<p>Now you must be thinking.... Wait wha? I thought only goroutines execute concurrently. Well, the main function of your go program is itself a go routine hence supporting simulatenous execution.</p>
+<h1 id="channels">Channels <a class="anchor" href="#channels">#</a></h1>
+<p>Channels are a method of communication between two goroutines in a totally dumbed down form. To be specific, it is a pipe between two goroutines which acts like an interface for interprocess or inter-thread communication. It is a datatype as per go which is simplified to an extent that any developer can exploit the beauty of concurrency in golang!</p>
+<p>Here's an code snippet for y'all to relate better :-</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+
+    messages := make(chan int) //Creation of pipe or channel which helps in inter-goroutine communication but only data of int type.
+
+    go func(a int, b int) { messages &lt;- (a+b) }(4,5)
+
+    msg := &lt;-messages
+    fmt.Println(msg)
+    fmt.Println(&quot;Hello&quot;)
+}
+</code></pre>
+<p>Well, it might be pretty evident that the above example prints the exact same output as the code snippet i showed for goroutines, the only difference here is that i'm not printing the sum of the two numbers in the function block itself, i am sending the data to the channel specified for inter-goroutine communication between the two goroutines in action here i.e. fn() and main function which we discussed is itself a goroutine. We send the data <code>a+b</code> to the channel <code>messages</code> and recieve the message from the fn() subroutine in the main function using the statement <code>msg:=&lt;-messages</code>.</p>
+<p>With this I hope you get a gist of what channels are in golang!</p>
+<p>Here's a bit more flexibility that channels provide:
+Channels can be restricted to two ways of data flow i.e. sending or recieving, and here are some code snippets to depict this feature!</p>
+<p><code>func fn(messages chan&lt;- int) //Recieving Only</code></p>
+<p>This above snippet implies that messages can only recieve data to it but not send data to any other goroutine.</p>
+<p><code>func fn(messages chan-&gt; int) //Sending Only</code></p>
+<p>This above snippet implies that messages can only send data but not recieve data from any other goroutine.</p>
+<p>And with that, I hope that i have convinced you on what wonders go can do with concurrency if the above two fundamental concepts are applied appropriately!</p>
+<p><em>Written by <a href="https://www.github.com/mukunddeepak">Mukund Deepak</a></em></p>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

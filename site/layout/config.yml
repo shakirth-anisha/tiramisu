@@ -1,0 +1,14 @@
+navbar:
+  - home: index.html
+  - about: about.html
+  - blog: collections/blog.html
+  - members: members.html
+  - history: history.html
+  - tags: tags.html
+  - homebrew: homebrew/index.html
+baseURL: https://hsp-test.netlify.app
+siteTitle: "HSP"
+siteScripts:
+author: HSP
+themeURL: "/static/style.css"
+copyright: "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International."

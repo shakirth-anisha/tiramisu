@@ -1,0 +1,474 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structures for Beginners |  A Complete Guide</title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+  <script>
+    const eventSource = new EventSource('http://localhost:8000/events');
+    eventSource.onmessage = function (event) {
+      location.reload()
+    };
+  </script>
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Data Structures for Beginners |  A Complete Guide" />
+  <meta property="og:description" content="Don&#39;t know where to start of your programming journey? You have reached the right place." />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="Don&#39;t know where to start of your programming journey? You have reached the right place.">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <article>
+        <section class="body">
+            
+            <div class="post-description">
+                <h1>Data Structures for Beginners |  A Complete Guide</h1>
+                <div class="authors-paceholder">
+                    <p>
+                        Published on 2023-01-06
+                        
+                        
+                        HSP
+                        
+                    </p>
+                </div>
+                <div class="tags-paceholder">
+                    
+                    <div class="tag">
+                        <a href="/tags/beginners.html">beginners</a>
+                    </div>
+                    
+                    <div class="tag">
+                        <a href="/tags/data%20structure.html">data structure</a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#introduction">Introduction:</a></li>
+<li>
+<a href="#topics-covered">Topics covered:</a></li>
+<li>
+<a href="#big-o-notation">Big O Notation</a></li>
+<li>
+<a href="#lets-take-a-simple-example">Let's take a simple example:</a><ul>
+<li>
+<a href="#approach-1-using-list-structure">Approach 1: Using List structure</a></li>
+<li>
+<a href="#approach-2-using-binary-search-tree-or-binary-search-on-sorted-list">Approach 2: Using Binary Search Tree (or binary search on sorted list</a></li>
+<li>
+<a href="#approach-3using-hashmap-or-hashset-the-most-efficient-for-unique-data">Approach 3:Using Hashmap or Hashset (the most efficient for unique data)</a></li>
+<li>
+<a href="#data-structures-are-mainly-of-two-types">Data Structures are mainly of two types:</a></li>
+<li>
+<a href="#1list">1.List</a><ul>
+<li>
+<a href="#time-complexity-of-lists">Time complexity of lists:</a></li>
+</ul>
+</li>
+<li>
+<a href="#2stack">2.Stack</a></li>
+<li>
+<a href="#3queue">3.Queue</a></li>
+<li>
+<a href="#tree">Tree</a><ul>
+<li>
+<a href="#time-complexity-of-bst">Time complexity of BST:</a></li>
+</ul>
+</li>
+<li>
+<a href="#hashmap">Hashmap</a><ul>
+<li>
+<a href="#time-complexity-of-hash-table">Time complexity of Hash Table:</a></li>
+</ul>
+</li>
+<li>
+<a href="#graph">Graph</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">Introduction: <a class="anchor" href="#introduction">#</a></h2>
+<p>Most of us see a question and just start typing out some logic that comes to our mind. Most of the time we don’t give importance to which approach is to be followed. While a program can have many possible answers, there is only a few which is optimal. As good programmers our aim is to find the most optimal solution.</p>
+<p><em>So how can we do this?</em>
+<img src="https://repository-images.githubusercontent.com/228240003/fa382e00-1bd2-11eb-992b-34d211d11cc2" alt="Data structure and algorithm">
+That's right!! The answer is <code>Data Structures and Algorithms</code>!!!.
+With these two ‘weapons’ we can solve any complex question and also make our approach optimal.</p>
+<p>In this post we are going to cover the basics about Data Structures.</p>
+<h2 id="topics-covered">Topics covered: <a class="anchor" href="#topics-covered">#</a></h2>
+<ol>
+<li>Importance of Data Structures</li>
+<li>Sample statistic to show need for Data Structures</li>
+<li>List of Data Structures
+<blockquote>
+<p>Each Data structure is a vast topic by itself, due to this reason many topics are only discussed on a very basic level and there is a lot more to learn about them.</p>
+</blockquote>
+</li>
+</ol>
+<p><em>So grab your cup of coffee and dive in!!!</em></p>
+<p>Let's start off with the main question.
+<em>Why should I use Data Structure in my logic?</em></p>
+<p>Imagine you have a whole rack of books scattered everywhere without any specific order or arrangement. You would take a really long time to search for one book right.
+But what if you took a little extra time to arrange it in the right position? Wouldn’t it save you a lot of time in all future searches for a book.</p>
+<p>That’s what data structures are about. It makes the data more organised for the purpose and makes future operations on it easier and faster, provided the data is inserted in the right order (i.e., using the appropriate data structure)
+It is very important to choose the right structure based on the need and application. We should consider which operation is done the most and choose a structure which can optimise that operation.</p>
+<h2 id="big-o-notation">Big O Notation <a class="anchor" href="#big-o-notation">#</a></h2>
+<p>To compare the efficiency of different data structures we use something known as the Big O Notation.</p>
+<blockquote>
+<p>Big O Notation is widely used to measure the efficiency of an algorithm in terms of its time and space requirements.
+<code>Time complexity</code> is the computation time taken for the code to execute as the input size increases.
+<code>Space complexity</code> is the amount of memory used for its execution.</p>
+</blockquote>
+<ul>
+<li>Linear complexity O(n): means that for an input of size 'n' we have the code performing 'n' instructions.</li>
+<li>Quadratic complexity O(n<sup>2</sup>): means that for an input of size 'n' the code performs 'n<sup>2</sup>' instructions.</li>
+<li>Constant complexity O(1): means that for an input of size 'n' the code performs only a constant number of instructions irrespective of the size of input. This gets very efficient when the size is very large.</li>
+</ul>
+<p><em>All the complexity tables discussed further are the average case complexities as worst case are the upper bound and efficiency of a structure cannot be appreciated and compared using worst case.</em></p>
+<p>Now that we are clear with complexities, let's go ahead with some statistics.</p>
+<h2 id="lets-take-a-simple-example">Let's take a simple example: <a class="anchor" href="#lets-take-a-simple-example">#</a></h2>
+<p>-&gt;You want to search for some of your favourite books in your large collection of books(example of insert once, search multiple times)</p>
+<h3 id="approach-1-using-list-structure">Approach 1: Using <strong>List</strong> structure <a class="anchor" href="#approach-1-using-list-structure">#</a></h3>
+<p>You had arranged all yours books in a random order in your racks. Now you will have to search the collection linearly to find the book and worst still if you had forgotten that your friend had borrowed that book, you will end up searching the entire collection for no reason.
+<code>Time complexity:O(n)</code>[linear complexity]</p>
+<h3 id="approach-2-using-binary-search-tree-or-binary-search-on-sorted-list">Approach 2: Using <strong>Binary Search Tree</strong> (or binary search on sorted list <a class="anchor" href="#approach-2-using-binary-search-tree-or-binary-search-on-sorted-list">#</a></h3>
+<p>Say you had arranged the books in alphabetical order. You can check the middle book first, if it comes after the name of your favourite book then search the first half, or else search the second half(known as <code>decrease and conquer</code> method).
+You have now reduced the time complexity to <code>O(log n)</code> [logarithmic time complexity]</p>
+<blockquote>
+<p>Now if you are familiar with time complexities you may question how is this efficient if it is not sorted cause major sorting techniques take a time of O(n log<sub>2</sub>n) and then an additional O(log<sub>2</sub>n) for binary search while searching linearly would take only O(n)</p>
+</blockquote>
+<p>Here is where the matter of which operation is performed the most comes into play, in this example sorting would be done once but we are doing search operation multiple times, in the long run Binary search proves to be more efficient than linear search.</p>
+<h3 id="approach-3using-hashmap-or-hashset-the-most-efficient-for-unique-data">Approach 3:Using <strong>Hashmap or Hashset</strong> (the most efficient for unique data) <a class="anchor" href="#approach-3using-hashmap-or-hashset-the-most-efficient-for-unique-data">#</a></h3>
+<p>Now hashmaps is a data structure that can be used for unique data or data with unique keys.
+If your library racks had a number for each position and you were able to find a unique value(called hash value) for each book using some function(called hash function) then you can place it in that position. Now when you want to search for your book all you have to do is find the hash value from the hash function and go to that position and take your book.
+We have now found a way to search the book in constant time independant of your total number of books.
+This is called constant time complexity, denoted by <code>O(1)</code>.</p>
+<p>Hashset is similar to hashmap except the fact that hashmap always points to a unique key(has key-value pairs) but hashset can have same hashcode(stored as object, no key-value pairs) for two elements leading to collisions.This is why hashmaps are faster than hashsets.
+<br/>
+<br/>
+Time taken for 10<sup>6</sup> search queries in a dataset of 10<sup>4</sup> unique elements</p>
+<p>Click on output to view code
+<a href="https://user-images.githubusercontent.com/60323193/211067255-d7d674c2-eb23-4135-a91e-94726ff53bb2.jpg"><img src="https://user-images.githubusercontent.com/60323193/211066418-e0dd0d10-ecea-4ed1-9b06-8537eb5e4496.jpg" alt="Sample statistic output"></a></p>
+<p>Now that we have understood the need for Data Structures let's dive into the various types of data structures!</p>
+<h3 id="data-structures-are-mainly-of-two-types">Data Structures are mainly of two types: <a class="anchor" href="#data-structures-are-mainly-of-two-types">#</a></h3>
+<p>-&gt;<strong>Linear</strong>(Eg: list,stack,queue,hashmap(dictionary in python),hashset(sets in python))</p>
+<blockquote>
+<p>In this type, the elements may be placed randomly or sequentially in the computer memory based on the implementation, but the access is always sequential.</p>
+</blockquote>
+<p>-&gt;<strong>Non-Linear</strong>(Eg: Tree,Graph)</p>
+<blockquote>
+<p>In this type, the elements may be placed randomly or sequentially in the computer memory and even the access can be sequential or random.</p>
+</blockquote>
+<figure>
+<img src="https://user-images.githubusercontent.com/60323193/211022330-cc2a86c8-be4d-4139-a1dd-c5e752901d14.png" alt="Classification of data structures">
+<figcaption><p>For all the data structures the main operations that we can perform are: <code>create</code>,<code>insert</code>,<code>delete</code>,<code>search</code>,<code>destroy</code>.</p></figcaption>
+</figure>
+<h3 id="1list">1.List <a class="anchor" href="#1list">#</a></h3>
+<p>A basic structure where all the elements are always accessed sequentially.
+<strong>Uses</strong>:
+This structure can be used when we want to access all the elements in a sequential manner with lesser memory consumption.
+It is mostly used to implement other data structures and it offers very limited use by itself.</p>
+<p>A list can be implemented by two ways:</p>
+<ol>
+<li><strong>Array</strong>: the storage is sequential in the memory.</li>
+<li><strong>Linked list</strong>: the storage in memory can be random, this can be achieved by linking the current to next with a pointer(this leads to additional memory requirement).
+<blockquote>
+<p>Linked list are of various types like singly linked list, doubly linked list, circular singly linked list, etc, <strong>which are not going to be discussed in detail in this post</strong>.</p>
+</blockquote>
+</li>
+</ol>
+<p>Time complexity of every structure depends on the implementation of the structure.</p>
+<h4 id="time-complexity-of-lists">Time complexity of lists: <a class="anchor" href="#time-complexity-of-lists">#</a></h4>
+<p>| Operation | Array implementation | Linked list implementation |
+| :-------: | :------------------: | :------------------------: |
+|  Search   |         O(n)         |            O(n)            |
+|  Insert   |         O(n)         |            O(1)            |
+|  Delete   |         O(n)         |            O(1)            |
+|  Access   |         O(1)         |            O(n)            |</p>
+<p>Space complexity: <code>O(n)</code></p>
+<blockquote>
+<p>Space required to implement list using linked list is more precisely O(2n) due to additional pointers but it is approximated to be O(n).</p>
+</blockquote>
+<h3 id="2stack">2.Stack <a class="anchor" href="#2stack">#</a></h3>
+<p>A list with a top pointer makes a stack. This list can be accessed or modified only through the top pointer and the other elements remain inaccessible.
+This structure is used when we want to do a last in first out operation (LIFO).
+Push means inserting into a stack and pop means removing it from the stack. Peek means just viewing the top of the stack.
+<img src="https://user-images.githubusercontent.com/60323193/211024135-1f0e7315-2399-4881-a27f-dba11ec70c10.png" alt="stack image">
+<strong>Uses</strong>:</p>
+<ol>
+<li>Recursive stack maintained by the program between calls.</li>
+<li>Infix to prefix or postfix conversion.</li>
+<li>Undo and redo in editors.
+Time and space complexity depends on the implementation of stack(using array or linked list).</li>
+</ol>
+<h3 id="3queue">3.Queue <a class="anchor" href="#3queue">#</a></h3>
+<p>A list with a front and rear pointer makes a queue structure. This structure can only be modified via its front or rear pointers while the others remain inaccessible.</p>
+<blockquote>
+<p>Various implementations of queues are possible like simple queue, circular queue, double ended queue, priority queue, etc. (The only difference is how the front and rear pointers are defined and what they perform).</p>
+</blockquote>
+<p>Enqueue means pushing into the queue from the rear end and dequeue means taking an element out from the front end.
+A queue is a first in first out(FIFO) structure.</p>
+<figure>
+<img src="https://user-images.githubusercontent.com/60323193/211024287-ac5975e4-b6d5-4e69-8c99-268194a7ed8e.png" alt="queue image">
+<figcaption><p><strong>Uses</strong>:</p></figcaption>
+</figure>
+<ol>
+<li>CPU scheduling</li>
+<li>Binary tree traversal(iterative version)</li>
+<li>Breadth-First-Search(BFS)</li>
+</ol>
+<p>Just like stacks the queue structure can also be implemented using lists and have their corresponding complexities.</p>
+<h3 id="tree">Tree <a class="anchor" href="#tree">#</a></h3>
+<p>This is one of the most important structure and has wide range of uses, even the files stored in your system uses a tree structure.
+Trees have various sub-structures which can be used as per the need.
+E.g.: AVL, splay tree, RBT (red black tree), BST (binary search tree), Trie tree, heaps, B Trees.
+<em>Due to the vastness of the topic, these won’t be discussed in detail.</em></p>
+<p><strong>Uses</strong>:</p>
+<ul>
+<li><strong>AVL</strong>:
+A balanced tree which can be used for cases with few insertions and large search queries.
+<blockquote>
+<p>O(log<sub>2</sub>n)-for search</p>
+</blockquote>
+</li>
+<li><strong>Splay Tree</strong>:
+A structure which can be used to move the most recent search to the top thus making it easier to search it in the future.
+<blockquote>
+<p>E.g.:In hospital records: a record which is searched once will be needed more frequently than those of discharged patients so moving this to a more easier to search position reduces the time for search queries.</p>
+</blockquote>
+</li>
+<li><strong>BST</strong>:
+A binary tree in which the root's value is greater than each left subtree and lesser than each right subtree makes a binary search tree.Inserting is time comsuming but search complexity is logarithmic so it is used for scenarios with few insertions and multiple searches.
+<img src="https://cdn.educba.com/academy/wp-content/uploads/2021/05/Binary-Tree-vs-Binary-Search-Tree.jpg" alt="Binary tree vs Binary search tree"></li>
+</ul>
+<h4 id="time-complexity-of-bst">Time complexity of BST: <a class="anchor" href="#time-complexity-of-bst">#</a></h4>
+<p>| Operation | Average Time Complexity |
+| :-------: | :---------------------: |
+|  Search   |   O(log<sub>2</sub>n)   |
+|  Insert   |   O(log<sub>2</sub>n)   |
+|  Delete   |   O(log<sub>2</sub>n)   |
+|  Access   |   O(log<sub>2</sub>n)   |</p>
+<p>Space complexity: <code>O(n)</code>
+<br/></p>
+<ul>
+<li><strong>Trie Tree</strong>:
+Trie tree (also known as prefix tree or digital tree) is a type of <a href="https://en.wikipedia.org/wiki/M-ary_tree">k-ary</a> search tree which can be used for searching keys.
+Using BST to search for a word of length M in a set of N keys then time time complexity would be <code>O(M*log N)</code>[for a well balanced BST], but using Trie we can bring it down to <code>O(M)</code>.
+But at what cost do we get this benefit?
+The space complexity of a Trie.
+<blockquote>
+<p>While most structures take linear or logarithmic space, trie trees have quadratic space complexity because of all the pointers it holds for each key.</p>
+</blockquote>
+</li>
+</ul>
+<p>Trie can be used for autocorrect features, dictionaries and substring matching.</p>
+<figure>
+<img src="https://static.javatpoint.com/ds/images/trie-data-structure.png" alt="trie tree image">
+<figcaption><p><br/></p></figcaption>
+</figure>
+<ul>
+<li><strong>Heaps</strong>:
+A tree should have two properties to be called a heap.</li>
+</ul>
+<ol>
+<li>
+<p>Structural property</p>
+<blockquote>
+<p>the tree should be a complete binary tree.</p>
+</blockquote>
+</li>
+<li>
+<p>Value property(parental dominance)</p>
+<blockquote>
+<p>all the parent nodes should have a value greater than the child nodes(if maxheap) or all the parent nodes should have value lesser than the child nodes(if minheap).</p>
+</blockquote>
+</li>
+</ol>
+<p>It is a tree structure which can be used for sorting (heap sort) and priority implementation (priority queues).</p>
+<br/>
+<ul>
+<li><strong>B Trees</strong>:
+It is a balanced tree which makes the execution speed to retrieve information from the disc faster by increasing the number of children.
+<blockquote>
+<p>A balanced binary tree reduces the time complexity of search to O(log<sub>2</sub>n), similarly a balanced tree with 'm' child nodes can do the search in O(log<sub>m</sub>n). This forms the basis of B Trees.</p>
+</blockquote>
+</li>
+</ul>
+<figure>
+<img src="https://static.javatpoint.com/ds/images/b-tree.png" alt="B tree image">
+</figure>
+<h3 id="hashmap">Hashmap <a class="anchor" href="#hashmap">#</a></h3>
+<p>A hashmap is created by calculating a hash value for each element and using it to place it in the hashmap. When searching for an element, the hash value can be calculated and searched in constant time.
+This structure can be used to get the fastest search result cause it can search in constant time (lots of collisions can make it O(n) which is very unlikely).</p>
+<blockquote>
+<p>Collision occurs when two or more elements have the same hash value. Collision handling is done by linear probing, quadratic probing, double hashing, separate chaining or rehashing.
+Rehashing is done when the space in the map is not enough. To maintain an optimal hashmap the load factor(load factor = number of elements/total size of hashmap) is set to 0.75 which ensures minimum collisions.</p>
+</blockquote>
+<h4 id="time-complexity-of-hash-table">Time complexity of Hash Table: <a class="anchor" href="#time-complexity-of-hash-table">#</a></h4>
+<p>| Operation | Average Time Complexity |
+| :-------: | :---------------------: |
+|  Search   |          O(1)           |
+|  Insert   |          O(1)           |
+|  Delete   |          O(1)           |
+|  Access   |           N/A           |</p>
+<p>Space complexity: <code>O(n)</code></p>
+<h3 id="graph">Graph <a class="anchor" href="#graph">#</a></h3>
+<p>A graph is a set of nodes(vertices) connected by edges. A graph can be cyclic or acyclic, directed or undirected, weighted or unweighted, connected or not connected.</p>
+<p>A graph can be implemented using any of the following:</p>
+<ol>
+<li>Adjacency Matrix</li>
+<li>Adjacency List</li>
+<li>Adjacency Multilist</li>
+</ol>
+<p>A graph can be traversed by:
+<code>Depth First Search(DFS)</code></p>
+<blockquote>
+<p>Check connectivity of graph, check if path exists between two vertices, check number of components in the graph.</p>
+</blockquote>
+<p><code>Breadth First Search(BFS)</code></p>
+<blockquote>
+<p>Helps to get the shortest path between two vertices and can do everything that a DFS traversal can do.</p>
+</blockquote>
+<p><strong>Uses</strong>:
+Graphs can be used in computer networks, social analysis and shortest path problems.
+<img src="https://miro.medium.com/max/1400/1*IBtDZq0_4yWpXt0mhda0jw.png" alt="graph image"></p>
+<figure>
+<img src="https://i.imgflip.com/6r3do9.jpg" alt="end image">
+<figcaption><p>Data structures by itself is a very extensive topic and I have tried my best to keep it short and to the point but data structures have a lot more to offer and everything mentioned above is just a bird's view of the vast world of data structures.</p></figcaption>
+</figure>
+<p>Kudos to those who had the patience to read the entire post.</p>
+<p>I would like to conclude the blog with a famous quote by Linus Torvalds.</p>
+<p><code>&quot;Bad programmers worry about the code. Good programmers worry about data structures and their relationships.&quot;</code></p>
+
+        </section>
+    </article>
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+</body>
+
+</html>
+

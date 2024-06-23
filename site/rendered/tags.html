@@ -1,0 +1,221 @@
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  
+  
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+
+  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+
+
+  
+  
+
+   
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+
+  <meta name="description" content="">
+
+  <script defer>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+
+<body>
+
+
+ 
+
+<header>
+    <nav>
+         
+        <a class="navitem" href="/index.html">[home]</a>
+          
+        <a class="navitem" href="/about.html">[about]</a>
+          
+        <a class="navitem" href="/collections/blog.html">[blog]</a>
+          
+        <a class="navitem" href="/members.html">[members]</a>
+          
+        <a class="navitem" href="/history.html">[history]</a>
+          
+        <a class="navitem" href="/tags.html">[tags]</a>
+          
+        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
+         
+    </nav>
+</header>
+
+<form class="siteSearch" id="searchSite">
+  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
+</form>
+<div id="site_search_result"></div>
+<script>
+  var resultDiv = document.getElementById("site_search_result");
+  document
+    .getElementById("searchSite")
+    .addEventListener("keyup", function (e) {
+      e.preventDefault();
+      const searchValue =
+        document.getElementById("searchSiteInput").value;
+
+      const url = "/static/index.json";
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          resultDiv.innerHTML = "";
+          found = 0;
+          if (searchValue != "") {
+            for (key in data) {
+              found += 1;
+              title =
+                data[key]["Frontmatter"]["Title"].toLowerCase();
+              if (title.includes(searchValue.toLowerCase())) {
+                var a = document.createElement("a");
+                a.innerHTML = data[key]["Frontmatter"]["Title"];
+                a.href = `/${data[key]["CompleteURL"]}`;
+                resultDiv.appendChild(a);
+                resultDiv.appendChild(
+                  document.createElement("br"),
+                );
+              }
+            }
+          } else {
+            document.getElementById("site_search_result").innerHTML = "";
+          }
+        })
+        .catch((error) => {
+          
+          console.error(
+            "There was a problem with the fetch operation:",
+            error,
+          );
+        });
+    });
+</script>
+ 
+    <div class="body">
+        <article>
+            <section class="posts">
+                <div class="all-tags">
+                    
+                    <a href="/tags/11ty.html">11ty</a>
+                    
+                    <a href="/tags/beginners.html">beginners</a>
+                    
+                    <a href="/tags/Bot.html">Bot</a>
+                    
+                    <a href="/tags/complier.html">complier</a>
+                    
+                    <a href="/tags/concurrency.html">concurrency</a>
+                    
+                    <a href="/tags/data%20structure.html">data structure</a>
+                    
+                    <a href="/tags/distros.html">distros</a>
+                    
+                    <a href="/tags/docker.html">docker</a>
+                    
+                    <a href="/tags/dockercompose.html">dockercompose</a>
+                    
+                    <a href="/tags/dockerinternals.html">dockerinternals</a>
+                    
+                    <a href="/tags/federatedlearning.html">federatedlearning</a>
+                    
+                    <a href="/tags/flutter.html">flutter</a>
+                    
+                    <a href="/tags/FOSS.html">FOSS</a>
+                    
+                    <a href="/tags/FrontEnd.html">FrontEnd</a>
+                    
+                    <a href="/tags/git.html">git</a>
+                    
+                    <a href="/tags/github.html">github</a>
+                    
+                    <a href="/tags/gitobjects.html">gitobjects</a>
+                    
+                    <a href="/tags/go.html">go</a>
+                    
+                    <a href="/tags/golang.html">golang</a>
+                    
+                    <a href="/tags/Homebrew.html">Homebrew</a>
+                    
+                    <a href="/tags/introduction.html">introduction</a>
+                    
+                    <a href="/tags/Kotlin.html">Kotlin</a>
+                    
+                    <a href="/tags/linux.html">linux</a>
+                    
+                    <a href="/tags/Linux.html">Linux</a>
+                    
+                    <a href="/tags/machinelearning.html">machinelearning</a>
+                    
+                    <a href="/tags/manifesto.html">manifesto</a>
+                    
+                    <a href="/tags/media.html">media</a>
+                    
+                    <a href="/tags/python.html">python</a>
+                    
+                    <a href="/tags/rebase.html">rebase</a>
+                    
+                    <a href="/tags/Telegram.html">Telegram</a>
+                    
+                    <a href="/tags/tilde.html">tilde</a>
+                    
+                    <a href="/tags/Turing%20Awards.html">Turing Awards</a>
+                    
+                    <a href="/tags/WebDev.html">WebDev</a>
+                    
+                    <a href="/tags/workshop.html">workshop</a>
+                    
+                    <a href="/tags/zig.html">zig</a>
+                    
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <div id="chart"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/static/scripts/graph.js"></script>
+
+    
+<footer>
+    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+</footer>
+
+
+</body>
+
+</html>
+
