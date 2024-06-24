@@ -2,140 +2,185 @@
 
 
 
-
-
-
+  
 
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>History</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>History</title>
-  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
 
-  
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
-  
-  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
 
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
 
-  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+        
+          
 
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="History" />
+        <meta
+            property="og:description"
+            content=""
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
 
-  
-  
-  <script>
-    const eventSource = new EventSource('http://localhost:8000/events');
-    eventSource.onmessage = function (event) {
-      location.reload()
-    };
-  </script>
-  
+        <meta
+            name="description"
+            content=""
+        />
 
-   
-
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="History" />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="" />
-
-  <meta name="description" content="">
-
-  <script defer>
-    hljs.highlightAll();
-    hljs.addPlugin(new CopyButtonPlugin());
-  </script>
-</head>
-
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
 
 <body>
 
+    
     
 
  
 
 <header>
     <nav>
-         
-        <a class="navitem" href="/index.html">[home]</a>
-          
-        <a class="navitem" href="/about.html">[about]</a>
-          
-        <a class="navitem" href="/collections/blog.html">[blog]</a>
-          
-        <a class="navitem" href="/members.html">[members]</a>
-          
-        <a class="navitem" href="/history.html">[history]</a>
-          
-        <a class="navitem" href="/tags.html">[tags]</a>
-          
-        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
-         
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
     </nav>
 </header>
 
-<form class="siteSearch" id="searchSite">
-  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
-</form>
-<div id="site_search_result"></div>
-<script>
-  var resultDiv = document.getElementById("site_search_result");
-  document
-    .getElementById("searchSite")
-    .addEventListener("keyup", function (e) {
-      e.preventDefault();
-      const searchValue =
-        document.getElementById("searchSiteInput").value;
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
 
-      const url = "/static/index.json";
+                const url = "/static/index.json";
 
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          resultDiv.innerHTML = "";
-          found = 0;
-          if (searchValue != "") {
-            for (key in data) {
-              found += 1;
-              title =
-                data[key]["Frontmatter"]["Title"].toLowerCase();
-              if (title.includes(searchValue.toLowerCase())) {
-                var a = document.createElement("a");
-                a.innerHTML = data[key]["Frontmatter"]["Title"];
-                a.href = `/${data[key]["CompleteURL"]}`;
-                resultDiv.appendChild(a);
-                resultDiv.appendChild(
-                  document.createElement("br"),
-                );
-              }
-            }
-          } else {
-            document.getElementById("site_search_result").innerHTML = "";
-          }
-        })
-        .catch((error) => {
-          
-          console.error(
-            "There was a problem with the fetch operation:",
-            error,
-          );
-        });
-    });
-</script>
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
  
-    <article>
-        <section class="body">
+
+        <div class="primary-container">
+            <div class="resizable-container">
+
             
+            <div class="post-description">
+                <h1>History</h1>
+            </div>
+            
+
             
             <h1 id="launchpad-2021">LaunchPad 2021</h1>
 <p>October 2021</p>
@@ -244,17 +289,21 @@ The second speaker was <strong>Saiyam Pathak</strong>, giving an overview on usa
 <p>Fireside Talks is a new venture by HackerSpace PESU-ECC where the club in association with ACM PESU-ECC aims to hold weekly meetups to inculcate the practise of discussing technical concepts.</p>
 <p>Members of both clubs come together and discuss, give their opinions on a topic collectively selected by the clubs. The members are provided with a bundle of resources to gain insights of the topic in dicussion and are free to contribute as well.</p>
 
-        </section>
-    </article>
+
+            </div>
+        </div>
+
     
 <footer>
-    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
 </footer>
+
 
     <script>
         hljs.highlightAll();
         hljs.addPlugin(new CopyButtonPlugin());
     </script>
+
 </body>
 
 </html>

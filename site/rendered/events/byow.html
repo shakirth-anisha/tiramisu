@@ -1,0 +1,275 @@
+
+
+
+
+  
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Build Your Own Website</title>
+
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
+
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/post.css"
+            as="style"
+        />
+
+        
+        
+
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
+
+        
+          
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Build Your Own Website" />
+        <meta
+            property="og:description"
+            content="A Hands-on workshop - Build your own website!"
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
+
+        <meta
+            name="description"
+            content="A Hands-on workshop - Build your own website!"
+        />
+
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
+    </nav>
+</header>
+
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
+
+                const url = "/static/index.json";
+
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
+ 
+
+    <div class="primary-container">
+            <div class="resizable-container">
+
+            <div class="post-description">
+                <h1>Build Your Own Website</h1>
+
+                <div class="post-date">
+                        Published on 2022-09-14
+                </div>
+                <div class="post-authors">
+                    
+                        
+                        
+
+                        
+
+                        
+
+                        
+                </div>
+
+                <div class="tags-placeholder">
+                    
+                </div>
+
+            </div>
+
+            <div class="post-body">
+            <section class="p-index_links_link">
+    <a href="https://forms.gle/iPs8d3agf5i9H1LEA" class="c-gradient-link"> 👉 Register Now! </a>
+</section>
+<figure>
+<img src="/static/images/byow/byow_poster_v5.png" alt="">
+</figure>
+<p>Do you want to build a website for yourself?</p>
+<p>On occasion of Engineer’s day, HackerSpace PESU-ECC is back with an interactive workshop on web development using Eleventy, a static site generator used by Google, CERN, and many others! ✨</p>
+<p>Date: 16th September, 2022
+Venue: Seminar Hall</p>
+<p>Why should you join it?
+👉 Beginner friendly
+👉 Covers a wide range of topics throughout the workshop, including Eleventy, HTML+CSS, and Netlify
+👉 Create your own website by the end of it!
+👉 Don’t miss the chance to flex the awesome technical skills you'll acquire!
+👉 If you’re in the 1st sem, gives a headstart on web development.
+👉 No entry fee!
+👉 Mentors will be present in case of any difficulty.</p>
+<p><a href="https://saksham-11ty.netlify.app/posts/2022/prereqisite/">Click here for the pre-requisities!</a></p>
+<p>Is it for you?
+Ofcourse! Students from all years are welcome to join in and learn more, and make their own website!</p>
+<p>Don't forget to register! <a href="https://tiy1l0l7c8l.typeform.com/to/ftfPjQbO">Click here.</a></p>
+<p>For any further questions contact: Anirudh Rowjee, +91 9980029716</p>
+
+            </div>
+
+            </div>
+        </div>    
+<footer>
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
+</footer>
+
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script>
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        var toc = document.querySelector("#toc > details");
+
+        var h1Element = document.getElementById("table-of-contents");
+        try {
+            var ulElement = h1Element.nextElementSibling;
+            if (!ulElement)
+                throw new Error(
+                    "Next sibling of #table-of-contents is not found",
+                );
+            h1Element.remove();
+            ulElement.remove();
+        } catch (error) {
+            var tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.remove();
+            }
+            document.remove(toc);
+        }
+    });
+
+    </script>
+</body>
+
+</html>
+

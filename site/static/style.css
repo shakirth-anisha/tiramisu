@@ -1,2 +1,5 @@
-@import url(styles/default.css);
-@import url(styles/tokyo-dark.css);
+@import url(/static/styles/reset.css);
+
+@import url(/static/styles/config.css);
+@import url(/static/styles/layout.css);
+@import url(/static/styles/collections.css);

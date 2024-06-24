@@ -1,0 +1,128 @@
+html {
+    background-color: var(--color-background);
+}
+
+body {
+    height: 100vh;
+    display: flex;
+
+    /* Direction of the items, can be row or column */
+    flex-direction: column;
+    color: var(--color-text);
+}
+
+.primary-container {
+    flex: 1;
+    display: flex;
+}
+
+.resizable-container {
+    flex-direct: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--body-width);
+}
+
+header,
+footer {
+    margin: 1rem 0 1rem;
+}
+
+footer {
+    height: 50px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--body-width);
+}
+
+nav {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.links {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+.hsp-logo {
+    max-width: 45px;
+    max-height: 45px;
+    border-radius: 100px;
+    margin: 0;
+}
+
+.navitem {
+    color: var(--color-text);
+}
+
+.search-input {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--body-width);
+}
+
+.search {
+    margin: 10px 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--body-width);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#searchSiteInput {
+    padding: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 1.1rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border-radius: 8px;
+    border: 2px var(--color-text-dim) solid;
+
+    box-shadow: 0 0 0 2px var(--color-background-dim);
+
+    &:focus {
+        outline: none;
+        border: 2px var(--color-primary) solid;
+    }
+}
+
+.site_search_result {
+    width: auto;
+    position: absolute;
+}
+
+@media (max-width: 900px) {
+    .resizable-container {
+        padding: 2rem;
+        width: auto;
+    }
+
+    header {
+        margin-inline: 2%;
+        width: auto;
+    }
+}

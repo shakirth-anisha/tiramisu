@@ -1,0 +1,306 @@
+
+
+
+
+  
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FOSS Meetup-June</title>
+
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
+
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/post.css"
+            as="style"
+        />
+
+        
+        
+
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
+
+        
+          
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="FOSS Meetup-June" />
+        <meta
+            property="og:description"
+            content="A brief blog on what went down at Geeky Ants!"
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
+
+        <meta
+            name="description"
+            content="A brief blog on what went down at Geeky Ants!"
+        />
+
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
+    </nav>
+</header>
+
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
+
+                const url = "/static/index.json";
+
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
+ 
+
+    <div class="primary-container">
+            <div class="resizable-container">
+
+            <div class="post-description">
+                <h1>FOSS Meetup-June</h1>
+
+                <div class="post-date">
+                        Published on 2023-09-05
+                </div>
+                <div class="post-authors">
+                    
+                        
+                        by
+                        
+
+                        
+
+                        
+                        <span style="color: var(--color-primary);">Siddarth.D.Pai</span> |
+                        
+                        <span style="color: var(--color-primary);">Nishtha P</span> |
+                        
+
+                        
+                </div>
+
+                <div class="tags-placeholder">
+                    
+                    <span class="tag">
+                        <a href="/tags/FOSS.html">#FOSS</a>
+                    </span>
+                    
+                    <span class="tag">
+                        <a href="/tags/FrontEnd.html">#FrontEnd</a>
+                    </span>
+                    
+                </div>
+
+            </div>
+
+            <div class="post-body">
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#talk-1-building-a-complete-cross-framework">Talk 1: Building a Complete Cross Framework</a></li>
+<li>
+<a href="#talk-2-how-has-the-shadow-dom-got-you-covered">Talk 2: How has the Shadow DOM got you covered?</a></li>
+<li>
+<a href="#talk-3-streamlining-app-quality-with-detox">Talk 3: Streamlining App Quality with Detox</a></li>
+<li>
+<a href="#panel-discussion-on-cybersecurity">Panel Discussion on Cybersecurity</a></li>
+</ul>
+<p>On July 1, 2023, we attended FOSS United Bangalore's first-ever themed meetup! It was a whole day dedicated to Frontend! It was our first time attending a FOSS meetup and we're looking forward to attending many more! There were three talks on different areas of Frontend Development and a panel discussion on Cybersecurity which covered various important aspects of the domain with the valuable opinions of industry experts.</p>
+<hr>
+<h2 id="talk-1-building-a-complete-cross-framework">Talk 1: Building a Complete Cross Framework <a class="anchor" href="#talk-1-building-a-complete-cross-framework">#</a></h2>
+<p>Speaker: <a href="https://twitter.com/vaibhavshn">Vaibhav Shinde</a></p>
+<p>In the first talk, an engineer from Dyte showed us how his company built cross-framework UI kits with the help of web components.
+He covered how his company specializes in enhancing live events with all the features you'd need, including audio/video conference, live streaming and chat, all in one SDK.
+He also provided an overview of various frameworks, including Preact and LIT, as well as Stencil and Fast, and a glimpse into essential tools like Snabbdom, Stencil, PostCSS and Autoprefixer which he uses in his work. To finish it off, we were introduced to React Storybook, a valuable tool for building UI components in isolation.</p>
+<hr>
+<h2 id="talk-2-how-has-the-shadow-dom-got-you-covered">Talk 2: How has the Shadow DOM got you covered? <a class="anchor" href="#talk-2-how-has-the-shadow-dom-got-you-covered">#</a></h2>
+<p>Speaker: <a href="https://www.linkedin.com/in/mukulramchandani/">Mukul Ramchandani</a></p>
+<p>The second session was a journey into the world of ShadowDOM. A passionate frontend engineer from Hublio started with an anecdote from his mom &quot;We don't look at our shadows anymore because we're too busy looking at our phones&quot;. Yikes!</p>
+<p>He explained to us what Shadow DOM is and it's significance in front-end development. We also learnt about differentiating between light and ShadowDOM and understanding their respective use cases and were given an in-depth look at how ShadowDOM ensures scoped styles and DOM encapsulation.
+He explored the composability and encapsulation aspects of ShadowDOM and showed us an example of an event model within the ShadowDOM context. He also gave us a comparative analysis of the LIT and Polymer frameworks.
+To wrap up the talk we were introduced to <a href="https://web.dev/shadowdom/">web.dev/shadowdom</a> a resource for further exploration into the Shadows.</p>
+<hr>
+<h2 id="talk-3-streamlining-app-quality-with-detox">Talk 3: Streamlining App Quality with Detox <a class="anchor" href="#talk-3-streamlining-app-quality-with-detox">#</a></h2>
+<p>Speaker: <a href="https://www.linkedin.com/in/swetatanwar/">Sweta Tanwar</a></p>
+<p>The final session was a deep dive into end-to-end testing for applications by a mobile application Developer.</p>
+<p>She introduced us to Detox, an open-source tool used for end-to-end integration testing. She gave us insights into integrating E2E testing seamlessly into a continuous integration and continuous delivery (CI/CD) pipeline and spoke about strategies for efficient mocking and stubbing in various testing scenarios.
+All in all, it was a refreshing presentation on an app's journey from development to deployment.</p>
+<hr>
+<h2 id="panel-discussion-on-cybersecurity">Panel Discussion on Cybersecurity <a class="anchor" href="#panel-discussion-on-cybersecurity">#</a></h2>
+<p>The Panel Discussion on Cybersecurity was a highlight of the FOSS meetup, providing a platform for 4 experts to share valuable thoughts on their best practices for frontend Web Security.
+Some of the crucial topics addressed during this session included strategies for enhancing the security of query parameters, techniques for purifying the Document Object Model (DOM) to prevent potential vulnerabilities, comprehensive insights into XSS attacks and mitigation strategies, the pivotal role of input validation in ensuring application security, strategies for simulating and securing API endpoints, insights into addressing DDoS attacks, and ensuring the security of data stored in S3 containers.</p>
+<hr>
+<figure>
+<img src="https://i.imgur.com/DbBjVWX.jpg" alt="">
+<figcaption><p><em>The team that made it possible</em></p></figcaption>
+</figure>
+<p>The FOSS meetup was a fun and valuable experience (with a lot of food) that deepened our understanding of frontend development and emphasized the critical importance of cybersecurity. Kudos to FOSS United Bangalore and GeekyAnts for this event!</p>
+
+            </div>
+
+            </div>
+        </div>    
+<footer>
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
+</footer>
+
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script>
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        var toc = document.querySelector("#toc > details");
+
+        var h1Element = document.getElementById("table-of-contents");
+        try {
+            var ulElement = h1Element.nextElementSibling;
+            if (!ulElement)
+                throw new Error(
+                    "Next sibling of #table-of-contents is not found",
+                );
+            h1Element.remove();
+            ulElement.remove();
+        } catch (error) {
+            var tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.remove();
+            }
+            document.remove(toc);
+        }
+    });
+
+    </script>
+</body>
+
+</html>
+

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hsp-test.netlify.app/sitemap.xml
+Sitemap: https://anirudhsudhir.github.io/test-hsp//sitemap.xml

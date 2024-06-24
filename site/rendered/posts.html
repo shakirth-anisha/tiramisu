@@ -2,49 +2,62 @@
 
 
 
-
-
-
+  
 
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
-  <link rel="preload stylesheet" href="/static/style.css" as="style" />
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
 
-  
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  
-  
-  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css" />
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
 
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
 
-  <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
+        
+          
 
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="" />
+        <meta
+            property="og:description"
+            content=""
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
 
-  
-  
+        <meta
+            name="description"
+            content=""
+        />
 
-   
-
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="" />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="" />
-
-  <meta name="description" content="">
-
-  <script defer>
-    hljs.highlightAll();
-    hljs.addPlugin(new CopyButtonPlugin());
-  </script>
-</head>
-
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
 
 <body>
     
@@ -53,91 +66,114 @@
 
 <header>
     <nav>
-         
-        <a class="navitem" href="/index.html">[home]</a>
-          
-        <a class="navitem" href="/about.html">[about]</a>
-          
-        <a class="navitem" href="/collections/blog.html">[blog]</a>
-          
-        <a class="navitem" href="/members.html">[members]</a>
-          
-        <a class="navitem" href="/history.html">[history]</a>
-          
-        <a class="navitem" href="/tags.html">[tags]</a>
-          
-        <a class="navitem" href="/homebrew/index.html">[homebrew]</a>
-         
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
     </nav>
 </header>
 
-<form class="siteSearch" id="searchSite">
-  <input type="text" placeholder="Search Post or Page" id="searchSiteInput" name="searchSite" required autocomplete="off" />
-</form>
-<div id="site_search_result"></div>
-<script>
-  var resultDiv = document.getElementById("site_search_result");
-  document
-    .getElementById("searchSite")
-    .addEventListener("keyup", function (e) {
-      e.preventDefault();
-      const searchValue =
-        document.getElementById("searchSiteInput").value;
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
 
-      const url = "/static/index.json";
+                const url = "/static/index.json";
 
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          resultDiv.innerHTML = "";
-          found = 0;
-          if (searchValue != "") {
-            for (key in data) {
-              found += 1;
-              title =
-                data[key]["Frontmatter"]["Title"].toLowerCase();
-              if (title.includes(searchValue.toLowerCase())) {
-                var a = document.createElement("a");
-                a.innerHTML = data[key]["Frontmatter"]["Title"];
-                a.href = `/${data[key]["CompleteURL"]}`;
-                resultDiv.appendChild(a);
-                resultDiv.appendChild(
-                  document.createElement("br"),
-                );
-              }
-            }
-          } else {
-            document.getElementById("site_search_result").innerHTML = "";
-          }
-        })
-        .catch((error) => {
-          
-          console.error(
-            "There was a problem with the fetch operation:",
-            error,
-          );
-        });
-    });
-</script>
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
  
     <div class="body">
         <article>
             <section class="posts">
                 
-                <a class="post-card" href="blog/FederatedLearning.html">
-                    <div class="post-card-div">
-                        <h3>Federated Learning</h3>
-                        <p> An introduction to Federated Learning, covering it&#39;s mechanisms, benefits, challenges, applications and future potential, all while maintaining data privacy and efficiency</p>
-                        <p>2024-06-09</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="homebrew/events/fossmeetupjuly.html">
+                <a class="post-card" href="events/fossmeetupjuly.html">
                     <div class="post-card-div">
                         <h3>FOSS Meetup-June</h3>
                         <p>A brief blog on what went down at Geeky Ants!</p>
@@ -145,7 +181,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="blog/hspmanifesto2023.html">
+                <a class="post-card" href="manifesto/hspmanifesto2023.html">
                     <div class="post-card-div">
                         <h3>HSP Manifesto 2023</h3>
                         <p>Read on to know the declaration of our collective goals and aspirations for HSP in the year 2023.</p>
@@ -153,7 +189,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="homebrew/events/git_up_and_running.html">
+                <a class="post-card" href="events/git_up_and_running.html">
                     <div class="post-card-div">
                         <h3>Git Up and Running</h3>
                         <p>Let&#39;s Learn about Git and Github!</p>
@@ -161,15 +197,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="blog/flutter.html">
-                    <div class="post-card-div">
-                        <h3>Introduction to Flutter</h3>
-                        <p>The perfect guide to kickstart your app-development interest!</p>
-                        <p>2023-02-06</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="homebrew/events/BotCamp.html">
+                <a class="post-card" href="events/BotCamp.html">
                     <div class="post-card-div">
                         <h3>Bot-Camp</h3>
                         <p>A Hands-on workshop to build your very first Telegram Bot!</p>
@@ -177,31 +205,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="blog/DataStructures.html">
-                    <div class="post-card-div">
-                        <h3>Data Structures for Beginners |  A Complete Guide</h3>
-                        <p>Don&#39;t know where to start of your programming journey? You have reached the right place.</p>
-                        <p>2023-01-06</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/large_objects.html">
-                    <div class="post-card-div">
-                        <h3>Large git objects and the power of git rebase.</h3>
-                        <p>The mystry of large git object and a working knoweldge of git rebase.</p>
-                        <p>2022-12-31</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/distroWars.html">
-                    <div class="post-card-div">
-                        <h3>What Linux Distro To Choose? | A Beginner&#39;s Guide</h3>
-                        <p>Confused What Distro To Choose?</p>
-                        <p>2022-12-10</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="homebrew/events/golang22.html">
+                <a class="post-card" href="events/golang22.html">
                     <div class="post-card-div">
                         <h3>Golang 101</h3>
                         <p>A hands-on workshop on using Golang</p>
@@ -209,7 +213,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="homebrew/events/11tutorial.html">
+                <a class="post-card" href="events/11tutorial.html">
                     <div class="post-card-div">
                         <h3>Basic 11ty Tutorial</h3>
                         <p>Workshop on 11ty</p>
@@ -217,7 +221,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="homebrew/events/byow.html">
+                <a class="post-card" href="events/byow.html">
                     <div class="post-card-div">
                         <h3>Build Your Own Website</h3>
                         <p>A Hands-on workshop - Build your own website!</p>
@@ -225,7 +229,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="homebrew/events/prereqisite.html">
+                <a class="post-card" href="events/prereqisite.html">
                     <div class="post-card-div">
                         <h3>Prerequisite for the 11ty Workshop</h3>
                         <p>Prerequisite and dependencies for the 11ty Workshop</p>
@@ -233,15 +237,7 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="blog/turing-awards.html">
-                    <div class="post-card-div">
-                        <h3>Turing awards</h3>
-                        <p>Want to add the Oscar equivalent of Computer Science to your vision board and hopefully, to your portfolio one day? Read on to know all about it.</p>
-                        <p>2022-09-05</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/manifesto-2022.html">
+                <a class="post-card" href="manifesto/manifesto-2022.html">
                     <div class="post-card-div">
                         <h3>The 2022 Manifesto</h3>
                         <p>Our plans for the Academic Year 2022-2023</p>
@@ -249,35 +245,11 @@
                     </div>
                 </a>
                 
-                <a class="post-card" href="homebrew/events/systemctl-start-linux.html">
+                <a class="post-card" href="events/systemctl-start-linux.html">
                     <div class="post-card-div">
                         <h3>systemctl start linux</h3>
                         <p>A Hands-on workshop on Linux and FOSS Software!</p>
                         <p>2022-04-07</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/Concurrency_In_Go.html">
-                    <div class="post-card-div">
-                        <h3>For Concurrency at its best, It&#39;s Go time!</h3>
-                        <p>Concurrent execution has been a concept which has been going around for years but has it ever been THIS easy in the developer&#39;s side!?</p>
-                        <p>2022-03-17</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/pacman.html">
-                    <div class="post-card-div">
-                        <h3>Pacman vs Other package managers</h3>
-                        <p></p>
-                        <p>2022-03-16</p>
-                    </div>
-                </a>
-                
-                <a class="post-card" href="blog/world_of_opensource.html">
-                    <div class="post-card-div">
-                        <h3>The World of Open Source!</h3>
-                        <p></p>
-                        <p>2022-03-03</p>
                     </div>
                 </a>
                 
@@ -287,7 +259,7 @@
 
     
 <footer>
-    Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
 </footer>
 
 </body>

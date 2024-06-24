@@ -3,10 +3,10 @@ title: "History"
 date: "2023-07-23"
 tags: []
 description:
-permalink: posts/{{ title | slug }}/index.html
-author_name: Siddarth.D.Pai
+authors: ["Siddarth.D.Pai"]
 author_link: https://github.com/siddarthpai
 type: page
+layout: page
 ---
 
 # LaunchPad 2021

@@ -5,10 +5,18 @@
 
 <header>
     <nav>
-        {{range $index_no, $map := .DeepDataMerge.LayoutConfig.Navbar}} {{range
-        $key, $value := $map }}
-        <a class="navitem" href="/{{ $value }}">[{{ $key }}]</a>
-        {{ end }} {{end}}
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            {{range $index_no, $map := .DeepDataMerge.LayoutConfig.Navbar}}
+            {{range $key, $value := $map }}
+            <a class="navitem" href="{{ $value }}">{{ $key }}</a>
+            {{ end }} {{end}}
+        </div>
     </nav>
 </header>
 {{template "search" .}} {{end}}

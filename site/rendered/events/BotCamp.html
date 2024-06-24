@@ -1,0 +1,288 @@
+
+
+
+
+  
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bot-Camp</title>
+
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
+
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/post.css"
+            as="style"
+        />
+
+        
+        
+
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
+
+        
+          
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Bot-Camp" />
+        <meta
+            property="og:description"
+            content="A Hands-on workshop to build your very first Telegram Bot!"
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
+
+        <meta
+            name="description"
+            content="A Hands-on workshop to build your very first Telegram Bot!"
+        />
+
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
+    </nav>
+</header>
+
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
+
+                const url = "/static/index.json";
+
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
+ 
+
+    <div class="primary-container">
+            <div class="resizable-container">
+
+            <div class="post-description">
+                <h1>Bot-Camp</h1>
+
+                <div class="post-date">
+                        Published on 2023-01-24
+                </div>
+                <div class="post-authors">
+                    
+                        
+                        
+
+                        
+
+                        
+
+                        
+                </div>
+
+                <div class="tags-placeholder">
+                    
+                    <span class="tag">
+                        <a href="/tags/Bot.html">#Bot</a>
+                    </span>
+                    
+                    <span class="tag">
+                        <a href="/tags/Telegram.html">#Telegram</a>
+                    </span>
+                    
+                    <span class="tag">
+                        <a href="/tags/Homebrew.html">#Homebrew</a>
+                    </span>
+                    
+                </div>
+
+            </div>
+
+            <div class="post-body">
+            <section class="p-index_links_link">
+    <a href="https://forms.gle/fxtiaRVgcib1qqqN7" class="c-gradient-link"> 👉 Register Now! </a>
+</section>
+<figure>
+<img src="/static/images/botcamp/botcamp.jpg" alt="">
+</figure>
+<p>Curious about building your own Telegram bot but don't know where to start?</p>
+<p>Presenting BotCamp, the beginner-oriented, hands-on Telegram bot building workshop from HackerSpace PESUECC! ✨</p>
+<p>Join us as we guide you to learn the basics of bot development with Telegram.
+Our mentors will be there to guide newcomers through the whole process - from building the bot to deploying it. It's super easy as well: all you need is a Telegram account and Python!</p>
+<p><strong>This workshop will be held on the 24th of January, 2023 from 3:45 to 5:30 PM at the Seminar Hall, PESU EC Campus.</strong></p>
+<p>We’ll talk about, and have you experience -</p>
+<ol>
+<li>Building your first Telegram bot using BotFather.</li>
+<li>Deploying the Telegram bot and using it on the App.</li>
+<li>Variations in the of tasks(<em>mimic chats</em> etc.) the bot can do.</li>
+<li>A quick Q&amp;A session with the Mentor team of HackerSpace to know how to push ahead your bot development skills.</li>
+</ol>
+<p>Don't miss this chance to jumpstart your bot-building journey. Register now!!</p>
+<p>You can read more about the event <a href="https://homebrew.hsp-ec.xyz/posts/botcamp-or-the-telegram-bot-workshop/">here</a></p>
+<p><a href="https://forms.gle/fxtiaRVgcib1qqqN7">Click here to register directly</a></p>
+<p>Registrations close on 22nd Jan!
+<strong><em>We can't wait to see you there!</em></strong></p>
+<p>For any further questions contact: Anirudh Rowjee, +91 9980029716</p>
+
+            </div>
+
+            </div>
+        </div>    
+<footer>
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
+</footer>
+
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script>
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        var toc = document.querySelector("#toc > details");
+
+        var h1Element = document.getElementById("table-of-contents");
+        try {
+            var ulElement = h1Element.nextElementSibling;
+            if (!ulElement)
+                throw new Error(
+                    "Next sibling of #table-of-contents is not found",
+                );
+            h1Element.remove();
+            ulElement.remove();
+        } catch (error) {
+            var tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.remove();
+            }
+            document.remove(toc);
+        }
+    });
+
+    </script>
+</body>
+
+</html>
+

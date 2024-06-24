@@ -1,0 +1,326 @@
+
+
+
+
+  
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The 2022 Manifesto</title>
+
+        <link
+            rel="preload stylesheet"
+            href="/static/style.css"
+            as="style"
+        />
+
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/post.css"
+            as="style"
+        />
+
+        
+        
+
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <link
+            href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="feed"
+            href="/feed.xml"
+        />
+
+        
+          
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="The 2022 Manifesto" />
+        <meta
+            property="og:description"
+            content="Our plans for the Academic Year 2022-2023"
+        />
+        <meta
+            property="og:image"
+            content=""
+        />
+
+        <meta
+            name="description"
+            content="Our plans for the Academic Year 2022-2023"
+        />
+
+        <script defer>
+            hljs.highlightAll();
+            hljs.addPlugin(new CopyButtonPlugin());
+        </script>
+    </head>
+    
+
+<body>
+
+    
+
+ 
+
+<header>
+    <nav>
+        <a href="/"
+            ><img
+                loading="lazy"
+                class="hsp-logo"
+                src="/static/images/hsplogo.png"
+        /></a>
+        <div class="links">
+            
+            
+            <a class="navitem" href="/index.html">home</a>
+             
+            
+            <a class="navitem" href="/collections/events.html">events</a>
+             
+            
+            <a class="navitem" href="/collections/manifesto.html">manifesto</a>
+             
+            
+            <a class="navitem" href="/collections/design.html">design</a>
+             
+            
+            <a class="navitem" href="/gallery.html">gallery</a>
+             
+            
+            <a class="navitem" href="/members.html">members</a>
+             
+            
+            <a class="navitem" href="/about.html">about</a>
+             
+        </div>
+    </nav>
+</header>
+
+<div class="search-input">
+    <form class="siteSearch" id="searchSite">
+        <input
+            type="text"
+            placeholder="Search Post or Page"
+            id="searchSiteInput"
+            name="searchSite"
+            required
+            autocomplete="off"
+        />
+    </form>
+</div>
+<div class="search">
+    <div id="site_search_result"></div>
+    <script>
+        var resultDiv = document.getElementById("site_search_result");
+        document
+            .getElementById("searchSite")
+            .addEventListener("keyup", function (e) {
+                e.preventDefault();
+                const searchValue =
+                    document.getElementById("searchSiteInput").value;
+
+                const url = "/static/index.json";
+
+                fetch(url)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        resultDiv.innerHTML = "";
+                        found = 0;
+                        if (searchValue != "") {
+                            for (key in data) {
+                                found += 1;
+                                title =
+                                    data[key]["Frontmatter"][
+                                        "Title"
+                                    ].toLowerCase();
+                                if (title.includes(searchValue.toLowerCase())) {
+                                    var a = document.createElement("a");
+                                    a.innerHTML =
+                                        data[key]["Frontmatter"]["Title"];
+                                    a.href = `/${data[key]["CompleteURL"]}`;
+                                    resultDiv.appendChild(a);
+                                    resultDiv.appendChild(
+                                        document.createElement("br"),
+                                    );
+                                }
+                            }
+                        } else {
+                            document.getElementById(
+                                "site_search_result",
+                            ).innerHTML = "";
+                        }
+                    })
+                    .catch((error) => {
+                        
+                        console.error(
+                            "There was a problem with the fetch operation:",
+                            error,
+                        );
+                    });
+            });
+    </script>
+</div>
+ 
+
+    <div class="primary-container">
+            <div class="resizable-container">
+
+            <div class="post-description">
+                <h1>The 2022 Manifesto</h1>
+
+                <div class="post-date">
+                        Published on 2022-08-08
+                </div>
+                <div class="post-authors">
+                    
+                        
+                        
+
+                        
+
+                        
+
+                        
+                </div>
+
+                <div class="tags-placeholder">
+                    
+                    <span class="tag">
+                        <a href="/tags/FOSS.html">#FOSS</a>
+                    </span>
+                    
+                    <span class="tag">
+                        <a href="/tags/Homebrew.html">#Homebrew</a>
+                    </span>
+                    
+                    <span class="tag">
+                        <a href="/tags/tilde.html">#tilde</a>
+                    </span>
+                    
+                </div>
+
+            </div>
+
+            <div class="post-body">
+            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+<ul>
+<li>
+<a href="#hackerspace-manifesto-2022">Hackerspace manifesto 2022</a><ul>
+<li>
+<a href="#tilde">Tilde</a></li>
+<li>
+<a href="#homebrew">Homebrew</a></li>
+<li>
+<a href="#closing-note">Closing Note</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="hackerspace-manifesto-2022">Hackerspace manifesto 2022 <a class="anchor" href="#hackerspace-manifesto-2022">#</a></h1>
+<p>Hi there! I'm Anirudh. I'm the core team lead of Hackerspace PESUECC.</p>
+<p>It's said that writing is far more preferable compared to all other forms of expression, as good writing requires clear thinking. It's in this spirit that this blog post is ending up here, on the Hackerspace Website, and not on the usual channels of communication.</p>
+<p>I see this post having two main reasons to exist - firstly, to highlight how we've grown not just as a student-run development club but also as a community. Secondly, and perhaps, most importantly, It's an attempt to establish the shared vision that I desparately hope will drive the further growth and development of this community.</p>
+<p>When Hackerspace PESUECC started off as a whatsapp group back in April of 2021, the vision was a singular one - Establish HackerSpace as a club that functions at the same level in both campuses.</p>
+<p>Now, When I look at where we are today - having gone from a whatsapp group of five people and nothing else, to a thriving community of thirty-six student developers, designers, marketers, and operators, who are, and have been, the backbone of our three events, multiple projects, and our open-source community - I can't help but feel a deep sense of pride.</p>
+<p>We have come far, and there is, without a doubt, much to be appreciated.</p>
+<p>At this juncture, I'm reminded of Robert Frost's &quot;Stopping by Woods on a Snowy Evening&quot;.</p>
+<p>In the Poem so mentioned, Frost undertakes a wintertime journey through a lush, beautiful countryside, and happens to encounter some woody, forest-like land. Snow cascading down around him, he notices the inherent beauty in the silence, and stops to soak in this oasis in time.</p>
+<p>His horse, confused, makes a sound that snaps Frost out of his reverie. He realizes he must move on; for while the beautiful woods may well be a worthwhile halt, it isn't his destination. Frost puts it best -</p>
+<blockquote>
+<p>The woods are lovely, dark and deep.
+But I have promises to keep,
+And miles to go before I sleep,
+And miles to go before I sleep.</p>
+</blockquote>
+<p>This leads to the question we, as members of HackerSpace PESUECC, need to ask ourselves - Is this really our destination?</p>
+<p>Throughout my time as the core team lead, I've had the wonderful privilege of being a part of communities such as PES Open Source (now UniFOSS) and FOSS United.</p>
+<p>In these communities, I understood that these two principles lie at the core of every functioning community.</p>
+<ol>
+<li>There exists a cause that brings like-minded folks together, and</li>
+<li>There exists a framework for them to communicate, discuss, and collaborate, to work towards that cause.</li>
+</ol>
+<p>The way I see it, there's a dire need for every student-run community to aggressively focus on two principal tenets.</p>
+<p>Firstly, We must ensure that we keep the spirit of building alive. It's what has driven change and innovation since time immemorial, and it's critical to not only encourage, but in fact, celebrate the act of creation and invention.</p>
+<p>Irrespective of which hat you choose to wear - be it that of an engineer, a designer, an operator, a marketer, or a mentor, The act of building and creating in a tight feedback loop is foundational to the progress of one's skill and learning.</p>
+<p>Secondly, We must ensure that the spirit of Free and Open-Source Software (FOSS) isn't just maintained, but rather, is actively evangelized.</p>
+<p>FOSS Runs the world, and this isn't an exaggeration by any means. These programs and libraries are the reason that Computers, Computer Science and Software Engineering is inexpensive and accessible to common people like you and me.</p>
+<p>As students, the largest beneficiaries of the FOSS Ecosystem, it's our responsibility to ensure that we carry on the tradition of free and open sharing of knowledge and software.</p>
+<p>At the core of both these principles lie two extremely important factors - Community, and Knowledge Sharing.</p>
+<p>Builders and Creators cannot be the sole judges of their work - A feedback mechanism is necessary to help them become better. Knowledge must be shared for those listening to understand what's happening, and those building to know what they can do better.</p>
+<p>Furthermore, FOSS, by its nature, depends on community. Knowledge-sharing is built into the concept, for one can only learn more when their work is used in different ways by the community that exists.</p>
+<p>Keeping these concepts, ideas, and principles in mind, I intend to ensure that HackerSpace PESUECC establishes a legacy of maintaining and growing the student FOSS Community, and of providing builders and creators a space to build and have their work bettered by feedback.</p>
+<p>We intend to launch two major initiatives this year.</p>
+<h2 id="tilde">Tilde <a class="anchor" href="#tilde">#</a></h2>
+<p>To ensure that builders and creators have a like-minded community of other builders and creators to help them become better, we intend to launch Tilde, a project development team initiative.</p>
+<p>Students can volunteer to start projects or take over existing projects, working on them in two-week cycles in groups of four or five, driving them toward completion. We won't impose any limit on what the projects are, so long as there's a learning outcome from building it.</p>
+<p>Teams meet at the end of the two weeks to discuss progress, take feedback, and if necessary, re-evaluate the direction chosen. Builders and Creators who volunteer will be provided with a profile page to show off their work.</p>
+<h2 id="homebrew">Homebrew <a class="anchor" href="#homebrew">#</a></h2>
+<p>To carry on the tradition of Free and Open-Source Software communities, Homebrew is the FOSS wing of HackerSpace PESUECC. Homebrew will conduct regular talks and workshops to spread the message of FOSS, share knowledge about new tools, and at times, explore new projects.</p>
+<p>Homebrew will also meet once a week to show off and discuss projects that members of the community have been working that use FOSS Technologies. These meetings will be open, and anyone can attend - even those outside the community. These meetings can also be used to discuss new and interesting FOSS projects.</p>
+<p>With this, we intend to build a strong open-source community here, and carry on the legacy of those communities that came before us.</p>
+<h2 id="closing-note">Closing Note <a class="anchor" href="#closing-note">#</a></h2>
+<p>In conclusion, I believe the year ahead can be one of immense challenges - starting communities from scratch is no joke, and it's foolish to believe it'll be easy - but we're doing it because of the long-term gains, and not the short-term ones.</p>
+<p>If you're someone who isn't a part of HackerSpace PESUECC, but you resonate with the goals and purposes of this message, please reach out.</p>
+<p>I look forward to seeing all of you joining us this year. Thank you for taking the time to read this.</p>
+<p>Anirudh Rowjee
+Core Team Lead, HackerSpace PESUECC</p>
+<p>Monday 08 August 2022</p>
+
+            </div>
+
+            </div>
+        </div>    
+<footer>
+    <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
+</footer>
+
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script>
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        var toc = document.querySelector("#toc > details");
+
+        var h1Element = document.getElementById("table-of-contents");
+        try {
+            var ulElement = h1Element.nextElementSibling;
+            if (!ulElement)
+                throw new Error(
+                    "Next sibling of #table-of-contents is not found",
+                );
+            h1Element.remove();
+            ulElement.remove();
+        } catch (error) {
+            var tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.remove();
+            }
+            document.remove(toc);
+        }
+    });
+
+    </script>
+</body>
+
+</html>
+

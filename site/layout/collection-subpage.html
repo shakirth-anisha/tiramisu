@@ -5,15 +5,19 @@
 <body>
     {{template "header" .}}
 
-    <div class="body">
-        <article>
-            <section class="tagged-posts">
-                {{$CollectionSet := index .DeepDataMerge.CollectionsMap .PageURL}}
-                {{range $CollectionSet }}
-                <a href="/{{.CompleteURL}}">{{.Frontmatter.Title}}</a>
-                {{end}}
-            </section>
-        </article>
+    <div class="primary-container">
+            <div class="resizable-container">
+                <div class="collections">
+                    {{$CollectionSet := index .DeepDataMerge.CollectionsMap .PageURL}}
+                    {{range $CollectionSet }}
+                    <a class="post-card"  href="/{{.CompleteURL}}">
+                        <h2 class="post-card-title">{{.Frontmatter.Title}}</h2>
+                        <p class="post-carddescription">{{.Frontmatter.Title}}</p>
+                        <p class="post-card-date">{{.Frontmatter.Date}}</p>
+                    </a>
+                    {{end}}
+                </div>
+            </div>
     </div>
 
     {{template "footer" .}}

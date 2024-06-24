@@ -1,0 +1,35 @@
+.collections {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.post-card {
+    padding: 0.5rem;
+    background-color: var(--color-background-dim);
+    color: var(--color-text);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    & > .post-card-title {
+        color: var(--color-heading);
+        font-size: 1.4rem;
+    }
+
+    & > .post-card-description {
+    }
+
+    & > .post-card-date {
+    }
+}
+
+@media (max-width: 900px) {
+    .post-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

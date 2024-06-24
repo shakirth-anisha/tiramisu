@@ -1,0 +1,91 @@
+{{ define "post"}}
+{{$PageData := index .DeepDataMerge.Templates .PageURL}}
+{{ template "post_head" .}}
+
+<body>
+
+    {{template "header" .}}
+
+    <div class="primary-container">
+            <div class="resizable-container">
+
+            <div class="post-description">
+                <h1>{{ $PageData.Frontmatter.Title }}</h1>
+
+                <div class="post-date">
+                        Published on {{$PageData.Frontmatter.Date}}
+                </div>
+                <div class="post-authors">
+                    <!-- Adding 'by' if author field contains entries -->
+                        {{ if eq (len $PageData.Frontmatter.Authors) 0 }}
+                        {{else}}
+                        by
+                        {{end}}
+
+                        {{ if eq (len $PageData.Frontmatter.Authors) 1 }}
+
+                        {{range $PageData.Frontmatter.Authors }}
+                            <span style="color: var(--color-primary);">{{ . }}</span>
+                        {{ end }}
+
+                        {{ else }}
+
+                        {{range $PageData.Frontmatter.Authors }}
+                        <span style="color: var(--color-primary);">{{ . }}</span> |
+                        {{ end }}
+
+                        {{ end }}
+                </div>
+
+                <div class="tags-placeholder">
+                    {{range $PageData.Frontmatter.Tags}}
+                    <span class="tag">
+                        <a href="/tags/{{.}}.html">#{{.}}</a>
+                    </span>
+                    {{end}}
+                </div>
+
+            </div>
+
+            <div class="post-body">
+            {{$PageData.Body}}
+            </div>
+
+            </div>
+        </div>    {{template "footer" .}}
+
+    <script>
+        hljs.highlightAll();
+        hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+
+    <script>
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        var toc = document.querySelector("#toc > details");
+
+        var h1Element = document.getElementById("table-of-contents");
+        try {
+            var ulElement = h1Element.nextElementSibling;
+            if (!ulElement)
+                throw new Error(
+                    "Next sibling of #table-of-contents is not found",
+                );
+            h1Element.remove();
+            ulElement.remove();
+        } catch (error) {
+            var tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.remove();
+            }
+            document.remove(toc);
+        }
+    });
+
+    </script>
+</body>
+
+</html>
+
+{{ end}}

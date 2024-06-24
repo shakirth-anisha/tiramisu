@@ -1,12 +1,13 @@
 navbar:
-  - home: index.html
-  - about: about.html
-  - blog: collections/blog.html
-  - members: members.html
-  - history: history.html
-  - tags: tags.html
-  - homebrew: homebrew/index.html
-baseURL: https://hsp-test.netlify.app
+  - home: /index.html
+  - events: /collections/events.html
+  - manifesto: /collections/manifesto.html
+  - design: /collections/design.html
+  - gallery: /gallery.html
+  - members: /members.html
+  - about: /about.html
+  # - Homebrew: https://homebrew.hsp-ec.xyz
+baseURL: https://anirudhsudhir.github.io/test-hsp/
 siteTitle: "HSP"
 siteScripts:
 author: HSP
