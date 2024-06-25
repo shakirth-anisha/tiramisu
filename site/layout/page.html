@@ -7,8 +7,7 @@
     <!-- this is the header -->
     {{template "header" .}}
 
-        <div class="primary-container">
-            <div class="resizable-container">
+        <div class="container">
 
             {{ if eq $PageData.Frontmatter.Title "home" }}
             {{else}}
@@ -20,7 +19,6 @@
             <!-- this is the body -->
             {{$PageData.Body}}
 
-            </div>
         </div>
 
     {{template "footer" .}}

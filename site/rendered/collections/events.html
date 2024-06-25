@@ -17,8 +17,15 @@
             as="style"
         />
 
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/collections.css"
+            as="style"
+        />
+
         
         
+
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
         <link
             href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
@@ -75,9 +82,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -99,133 +103,94 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
-
-    <div class="primary-container">
-            <div class="resizable-container">
-                <div class="collections">
+        <div class="container">
+            
+                
+                
+                <a class="post-card" href="/events/11tutorial.html">
                     
-                    
-                    <a class="post-card"  href="/events/11tutorial.html">
                         <h2 class="post-card-title">Basic 11ty Tutorial</h2>
-                        <p class="post-carddescription">Basic 11ty Tutorial</p>
+                        <p class="post-card-description">Basic 11ty Tutorial</p>
                         <p class="post-card-date">2022-09-16</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/BotCamp.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/BotCamp.html">
+                    
                         <h2 class="post-card-title">Bot-Camp</h2>
-                        <p class="post-carddescription">Bot-Camp</p>
+                        <p class="post-card-description">Bot-Camp</p>
                         <p class="post-card-date">2023-01-24</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/byow.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/byow.html">
+                    
                         <h2 class="post-card-title">Build Your Own Website</h2>
-                        <p class="post-carddescription">Build Your Own Website</p>
+                        <p class="post-card-description">Build Your Own Website</p>
                         <p class="post-card-date">2022-09-14</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/fossmeetupjuly.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/fossmeetupjuly.html">
+                    
                         <h2 class="post-card-title">FOSS Meetup-June</h2>
-                        <p class="post-carddescription">FOSS Meetup-June</p>
+                        <p class="post-card-description">FOSS Meetup-June</p>
                         <p class="post-card-date">2023-09-05</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/git_up_and_running.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/git_up_and_running.html">
+                    
                         <h2 class="post-card-title">Git Up and Running</h2>
-                        <p class="post-carddescription">Git Up and Running</p>
+                        <p class="post-card-description">Git Up and Running</p>
                         <p class="post-card-date">2023-02-06</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/golang22.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/golang22.html">
+                    
                         <h2 class="post-card-title">Golang 101</h2>
-                        <p class="post-carddescription">Golang 101</p>
+                        <p class="post-card-description">Golang 101</p>
                         <p class="post-card-date">2022-09-23</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/prereqisite.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/prereqisite.html">
+                    
                         <h2 class="post-card-title">Prerequisite for the 11ty Workshop</h2>
-                        <p class="post-carddescription">Prerequisite for the 11ty Workshop</p>
+                        <p class="post-card-description">Prerequisite for the 11ty Workshop</p>
                         <p class="post-card-date">2022-09-14</p>
-                    </a>
                     
-                    <a class="post-card"  href="/events/systemctl-start-linux.html">
+                </a>
+
+                
+                
+                <a class="post-card" href="/events/systemctl-start-linux.html">
+                    
                         <h2 class="post-card-title">systemctl start linux</h2>
-                        <p class="post-carddescription">systemctl start linux</p>
+                        <p class="post-card-description">systemctl start linux</p>
                         <p class="post-card-date">2022-04-07</p>
-                    </a>
                     
-                </div>
-            </div>
-    </div>
+                </a>
+
+                
+                
+            
+        </div>
 
     
 <footer>

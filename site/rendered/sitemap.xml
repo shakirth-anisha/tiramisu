@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/byow.html</loc>
-		<lastmod>2022-09-14</lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/fossmeetupjuly.html</loc>
-		<lastmod>2023-09-05</lastmod>
+		<loc>https://anirudhsudhir.github.io/test-hsp//about.html</loc>
+		<lastmod></lastmod>
 	</url>
 	<url>
 		<loc>https://anirudhsudhir.github.io/test-hsp//events/prereqisite.html</loc>
 		<lastmod>2022-09-14</lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//manifesto/hspmanifesto2023.html</loc>
-		<lastmod>2023-08-09</lastmod>
 	</url>
 	<url>
 		<loc>https://anirudhsudhir.github.io/test-hsp//manifesto/manifesto-2022.html</loc>
@@ -25,43 +17,51 @@
 		<lastmod></lastmod>
 	</url>
 	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/golang22.html</loc>
-		<lastmod>2022-09-23</lastmod>
+		<loc>https://anirudhsudhir.github.io/test-hsp//history.html</loc>
+		<lastmod>2023-07-23</lastmod>
 	</url>
 	<url>
 		<loc>https://anirudhsudhir.github.io/test-hsp//index.html</loc>
 		<lastmod></lastmod>
 	</url>
 	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//members.html</loc>
-		<lastmod></lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//about.html</loc>
-		<lastmod></lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/11tutorial.html</loc>
-		<lastmod>2022-09-16</lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/BotCamp.html</loc>
-		<lastmod>2023-01-24</lastmod>
-	</url>
-	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//events/git_up_and_running.html</loc>
-		<lastmod>2023-02-06</lastmod>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/golang22.html</loc>
+		<lastmod>2022-09-23</lastmod>
 	</url>
 	<url>
 		<loc>https://anirudhsudhir.github.io/test-hsp//events/systemctl-start-linux.html</loc>
 		<lastmod>2022-04-07</lastmod>
 	</url>
 	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/11tutorial.html</loc>
+		<lastmod>2022-09-16</lastmod>
+	</url>
+	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/byow.html</loc>
+		<lastmod>2022-09-14</lastmod>
+	</url>
+	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/git_up_and_running.html</loc>
+		<lastmod>2023-02-06</lastmod>
+	</url>
+	<url>
 		<loc>https://anirudhsudhir.github.io/test-hsp//gallery.html</loc>
 		<lastmod></lastmod>
 	</url>
 	<url>
-		<loc>https://anirudhsudhir.github.io/test-hsp//history.html</loc>
-		<lastmod>2023-07-23</lastmod>
+		<loc>https://anirudhsudhir.github.io/test-hsp//manifesto/hspmanifesto2023.html</loc>
+		<lastmod>2023-08-09</lastmod>
+	</url>
+	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//members.html</loc>
+		<lastmod></lastmod>
+	</url>
+	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/BotCamp.html</loc>
+		<lastmod>2023-01-24</lastmod>
+	</url>
+	<url>
+		<loc>https://anirudhsudhir.github.io/test-hsp//events/fossmeetupjuly.html</loc>
+		<lastmod>2023-09-05</lastmod>
 	</url>
 </urlset>

@@ -41,6 +41,13 @@
         />
 
         
+        
+        <script>
+            const eventSource = new EventSource("http://localhost:8000/events");
+            eventSource.onmessage = function (event) {
+                location.reload();
+            };
+        </script>
           
 
         <meta property="og:type" content="website" />
@@ -83,9 +90,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -107,106 +111,36 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
+        <div class="container">
 
-    <div class="primary-container">
-            <div class="resizable-container">
+        <div class="post-description">
+            <h1>Build Your Own Website</h1>
 
-            <div class="post-description">
-                <h1>Build Your Own Website</h1>
-
-                <div class="post-date">
-                        Published on 2022-09-14
-                </div>
-                <div class="post-authors">
+            <div class="post-date">
+                    Published on 2022-09-14
+            </div>
+            <div class="post-authors">
+                
                     
-                        
-                        
-
-                        
-
-                        
-
-                        
-                </div>
-
-                <div class="tags-placeholder">
                     
-                </div>
 
+                    
+
+                    
+
+                    
             </div>
 
-            <div class="post-body">
-            <section class="p-index_links_link">
+            <div class="tags-placeholder">
+                
+            </div>
+
+        </div>
+
+        <div class="post-body">
+        <section class="p-index_links_link">
     <a href="https://forms.gle/iPs8d3agf5i9H1LEA" class="c-gradient-link"> 👉 Register Now! </a>
 </section>
 <figure>
@@ -216,24 +150,40 @@
 <p>On occasion of Engineer’s day, HackerSpace PESU-ECC is back with an interactive workshop on web development using Eleventy, a static site generator used by Google, CERN, and many others! ✨</p>
 <p>Date: 16th September, 2022
 Venue: Seminar Hall</p>
-<p>Why should you join it?
-👉 Beginner friendly
-👉 Covers a wide range of topics throughout the workshop, including Eleventy, HTML+CSS, and Netlify
-👉 Create your own website by the end of it!
-👉 Don’t miss the chance to flex the awesome technical skills you'll acquire!
-👉 If you’re in the 1st sem, gives a headstart on web development.
-👉 No entry fee!
-👉 Mentors will be present in case of any difficulty.</p>
+<p>Why should you join it?</p>
+<ul>
+<li>
+<p>👉 Beginner friendly</p>
+</li>
+<li>
+<p>👉 Covers a wide range of topics throughout the workshop, including Eleventy, HTML+CSS, and Netlify</p>
+</li>
+<li>
+<p>👉 Create your own website by the end of it!</p>
+</li>
+<li>
+<p>👉 Don’t miss the chance to flex the awesome technical skills you'll acquire!</p>
+</li>
+<li>
+<p>👉 If you’re in the 1st sem, gives a headstart on web development.</p>
+</li>
+<li>
+<p>👉 No entry fee!</p>
+</li>
+<li>
+<p>👉 Mentors will be present in case of any difficulty.</p>
+</li>
+</ul>
 <p><a href="https://saksham-11ty.netlify.app/posts/2022/prereqisite/">Click here for the pre-requisities!</a></p>
 <p>Is it for you?
 Ofcourse! Students from all years are welcome to join in and learn more, and make their own website!</p>
 <p>Don't forget to register! <a href="https://tiy1l0l7c8l.typeform.com/to/ftfPjQbO">Click here.</a></p>
 <p>For any further questions contact: Anirudh Rowjee, +91 9980029716</p>
 
-            </div>
+        </div>
 
-            </div>
-        </div>    
+        </div>
+        
 <footer>
     <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
 </footer>

@@ -17,8 +17,15 @@
             as="style"
         />
 
+        <link
+            rel="preload stylesheet"
+            href="/static/styles/collections.css"
+            as="style"
+        />
+
         
         
+
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
         <link
             href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
@@ -75,9 +82,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -99,88 +103,23 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
-
-    <div class="body">
-        <article>
-            <section class="tagged-posts">
-                
-                
-                <a href="/events/11tutorial.html">Basic 11ty Tutorial</a>
-                
-                <a href="/events/prereqisite.html">Prerequisite for the 11ty Workshop</a>
-                
-            </section>
-        </article>
+    <div class="container">
+        
+        
+        <a class="post-card" href="/events/11tutorial.html">
+            <h3 class="post-card-title">Basic 11ty Tutorial</h3>
+            <p class="post-card-description">Basic 11ty Tutorial</p>
+            <p class="post-card-date">2022-09-16</p>
+        </a>
+        
+        <a class="post-card" href="/events/prereqisite.html">
+            <h3 class="post-card-title">Prerequisite for the 11ty Workshop</h3>
+            <p class="post-card-description">Prerequisite for the 11ty Workshop</p>
+            <p class="post-card-date">2022-09-14</p>
+        </a>
+        
     </div>
 
     

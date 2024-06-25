@@ -41,6 +41,13 @@
         />
 
         
+        
+        <script>
+            const eventSource = new EventSource("http://localhost:8000/events");
+            eventSource.onmessage = function (event) {
+                location.reload();
+            };
+        </script>
           
 
         <meta property="og:type" content="website" />
@@ -83,9 +90,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -107,118 +111,48 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
+        <div class="container">
 
-    <div class="primary-container">
-            <div class="resizable-container">
+        <div class="post-description">
+            <h1>Bot-Camp</h1>
 
-            <div class="post-description">
-                <h1>Bot-Camp</h1>
-
-                <div class="post-date">
-                        Published on 2023-01-24
-                </div>
-                <div class="post-authors">
+            <div class="post-date">
+                    Published on 2023-01-24
+            </div>
+            <div class="post-authors">
+                
                     
-                        
-                        
-
-                        
-
-                        
-
-                        
-                </div>
-
-                <div class="tags-placeholder">
                     
-                    <span class="tag">
-                        <a href="/tags/Bot.html">#Bot</a>
-                    </span>
-                    
-                    <span class="tag">
-                        <a href="/tags/Telegram.html">#Telegram</a>
-                    </span>
-                    
-                    <span class="tag">
-                        <a href="/tags/Homebrew.html">#Homebrew</a>
-                    </span>
-                    
-                </div>
 
+                    
+
+                    
+
+                    
             </div>
 
-            <div class="post-body">
-            <section class="p-index_links_link">
+            <div class="tags-placeholder">
+                
+                <span class="tag">
+                    <code><a href="/tags/Bot.html">#Bot</a></code>
+                </span>
+                
+                <span class="tag">
+                    <code><a href="/tags/Telegram.html">#Telegram</a></code>
+                </span>
+                
+                <span class="tag">
+                    <code><a href="/tags/Homebrew.html">#Homebrew</a></code>
+                </span>
+                
+            </div>
+
+        </div>
+
+        <div class="post-body">
+        <section class="p-index_links_link">
     <a href="https://forms.gle/fxtiaRVgcib1qqqN7" class="c-gradient-link"> 👉 Register Now! </a>
 </section>
 <figure>
@@ -243,10 +177,10 @@ Our mentors will be there to guide newcomers through the whole process - from bu
 <strong><em>We can't wait to see you there!</em></strong></p>
 <p>For any further questions contact: Anirudh Rowjee, +91 9980029716</p>
 
-            </div>
+        </div>
 
-            </div>
-        </div>    
+        </div>
+        
 <footer>
     <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
 </footer>

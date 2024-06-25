@@ -1,23 +1,17 @@
 {{ define "posts"}}
 {{$PageData := .TemplateData}}
-{{ template "head" .}}
+{{ template "collections_subpage_head" .}}
 
 <body>
     {{template "header" .}}
-    <div class="body">
-        <article>
-            <section class="posts">
-                {{range $PostDate, $Post := .DeepDataMerge.Posts}}
-                <a class="post-card" href="{{$Post.CompleteURL}}">
-                    <div class="post-card-div">
-                        <h3>{{$Post.Frontmatter.Title}}</h3>
-                        <p>{{$Post.Frontmatter.Description}}</p>
-                        <p>{{$Post.Frontmatter.Date}}</p>
-                    </div>
-                </a>
-                {{end}}
-            </section>
-        </article>
+    <div class="container">
+            {{range $PostDate, $Post := .DeepDataMerge.Posts}}
+            <a class="post-card" href="{{$Post.CompleteURL}}">
+                <h3 class="post-card-title">{{$Post.Frontmatter.Title}}</h3 >
+                <p class="post-card-description">{{$Post.Frontmatter.Description}}</p >
+                <p class="post-card-date">{{$Post.Frontmatter.Date}}</p >
+            </a>
+            {{end}}
     </div>
 
     {{template "footer" .}}

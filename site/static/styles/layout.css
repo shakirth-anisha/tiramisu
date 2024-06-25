@@ -11,16 +11,14 @@ body {
     color: var(--color-text);
 }
 
-.primary-container {
-    flex: 1;
-    display: flex;
-}
-
-.resizable-container {
+.container {
     flex-direct: 1;
     margin-left: auto;
     margin-right: auto;
     max-width: var(--body-width);
+    width: var(--body-width);
+
+    flex-grow: 1;
 }
 
 header,
@@ -34,6 +32,9 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* position: absolute; */
+    bottom: 0;
 }
 
 header {
@@ -47,6 +48,7 @@ nav {
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     gap: 50px;
 }
@@ -54,8 +56,10 @@ nav {
 .links {
     margin-left: auto;
     display: flex;
+    /* flex-direction: row-reverse; */
     gap: 10px;
     flex-wrap: wrap;
+    font-size: 1.1rem;
 }
 
 .links a {
@@ -63,8 +67,8 @@ nav {
 }
 
 .hsp-logo {
-    max-width: 45px;
-    max-height: 45px;
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 100px;
     margin: 0;
 }
@@ -99,7 +103,7 @@ nav {
     font-size: 1.1rem;
     background-color: var(--color-background);
     color: var(--color-text);
-    border-radius: 8px;
+    border-radius: 50px;
     border: 2px var(--color-text-dim) solid;
 
     box-shadow: 0 0 0 2px var(--color-background-dim);
@@ -115,14 +119,52 @@ nav {
     position: absolute;
 }
 
+.home-nav {
+
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+
+    & > p > a {
+        color: var(--color-heading);
+
+        text-decoration: none;
+    }
+
+    & > p {
+
+        margin: 0;
+
+        margin-top: 0.8rem;
+
+        transition: all 150ms ease-in-out;
+
+        border: 2px var(--color-background-dim) solid;
+        background-color: var(--color-background-dim);
+        padding: 0.8rem;
+        border-radius: 8px;
+    }
+
+    & > p:hover {
+        scale: 1.02;
+
+        border: 2px var(--color-primary) solid;
+    }
+}
+
 @media (max-width: 900px) {
-    .resizable-container {
-        padding: 2rem;
+    /*
+    .container {
+        padding: 0;
+        width: 100%;
+    }
+ */
+    .container {
         width: auto;
+        margin-inline: 5%;
     }
 
     header {
-        margin-inline: 2%;
+        margin-inline: 5%;
         width: auto;
     }
 }

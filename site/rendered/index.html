@@ -34,6 +34,13 @@
         />
 
         
+        
+        <script>
+            const eventSource = new EventSource("http://localhost:8000/events");
+            eventSource.onmessage = function (event) {
+                location.reload();
+            };
+        </script>
           
 
         <meta property="og:type" content="website" />
@@ -77,9 +84,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -101,94 +105,28 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
-
-        <div class="primary-container">
-            <div class="resizable-container">
+        <div class="container">
 
             
             
 
             
-            <figure>
-<img src="/static/images/home.jpeg" alt="image of us">
-</figure>
-<h1 id="hsppesuecc">HSPPESUECC</h1>
-<p style="font-size: 1.6rem; font-weight: 350; font-family: AzeretMono;"> Hackerspace PESUECC is a Student-Powered Developer Community located at PES University, Electronic City Campus.</p>
+            <!--[image of us](/static/images/home.jpeg)-->
+<h1 style="margin-top: 0.4rem; font-size: 3.2rem; font-weight: 300;">HSPPESUECC</h1>
+<p style="margin-top: 0.4rem; font-size: 1.6rem; font-weight: 350; font-family: AzeretMono;"> Hackerspace PESUECC is a Student-Powered Developer Community located at PES University, Electronic City Campus.</p>
 <p>The club was started in 2021, with a founding team of five people. Presently, the club has more than 36 Staff, and remains an open, student-run and student-directed community.</p>
+<h2 id="links">Links</h2>
+<div class="home-nav">
+<p><a href="https://homebrew.hsp-ec.xyz/">Homebrew FOSS by HSP PESUECC</a></p>
+<p><a href="https://discord.com/invite/9m7ad5mDVK">Hackerspace Discord</a></p>
+<p><a href="https://www.instagram.com/hsp.pesuecc/">Instagram</a></p>
+<p><a href="https://www.youtube.com/channel/UCtFFsoFIBV0udCCf6ryNFAQ">Youtube</a></p>
+</div>
 <h2 id="featured">Featured</h2>
 
 
-            </div>
         </div>
 
     

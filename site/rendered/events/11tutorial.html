@@ -41,6 +41,13 @@
         />
 
         
+        
+        <script>
+            const eventSource = new EventSource("http://localhost:8000/events");
+            eventSource.onmessage = function (event) {
+                location.reload();
+            };
+        </script>
           
 
         <meta property="og:type" content="website" />
@@ -83,9 +90,6 @@
         <div class="links">
             
             
-            <a class="navitem" href="/index.html">home</a>
-             
-            
             <a class="navitem" href="/collections/events.html">events</a>
              
             
@@ -107,117 +111,47 @@
     </nav>
 </header>
 
-<div class="search-input">
-    <form class="siteSearch" id="searchSite">
-        <input
-            type="text"
-            placeholder="Search Post or Page"
-            id="searchSiteInput"
-            name="searchSite"
-            required
-            autocomplete="off"
-        />
-    </form>
-</div>
-<div class="search">
-    <div id="site_search_result"></div>
-    <script>
-        var resultDiv = document.getElementById("site_search_result");
-        document
-            .getElementById("searchSite")
-            .addEventListener("keyup", function (e) {
-                e.preventDefault();
-                const searchValue =
-                    document.getElementById("searchSiteInput").value;
 
-                const url = "/static/index.json";
 
-                fetch(url)
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        resultDiv.innerHTML = "";
-                        found = 0;
-                        if (searchValue != "") {
-                            for (key in data) {
-                                found += 1;
-                                title =
-                                    data[key]["Frontmatter"][
-                                        "Title"
-                                    ].toLowerCase();
-                                if (title.includes(searchValue.toLowerCase())) {
-                                    var a = document.createElement("a");
-                                    a.innerHTML =
-                                        data[key]["Frontmatter"]["Title"];
-                                    a.href = `/${data[key]["CompleteURL"]}`;
-                                    resultDiv.appendChild(a);
-                                    resultDiv.appendChild(
-                                        document.createElement("br"),
-                                    );
-                                }
-                            }
-                        } else {
-                            document.getElementById(
-                                "site_search_result",
-                            ).innerHTML = "";
-                        }
-                    })
-                    .catch((error) => {
-                        
-                        console.error(
-                            "There was a problem with the fetch operation:",
-                            error,
-                        );
-                    });
-            });
-    </script>
-</div>
- 
+        <div class="container">
 
-    <div class="primary-container">
-            <div class="resizable-container">
+        <div class="post-description">
+            <h1>Basic 11ty Tutorial</h1>
 
-            <div class="post-description">
-                <h1>Basic 11ty Tutorial</h1>
-
-                <div class="post-date">
-                        Published on 2022-09-16
-                </div>
-                <div class="post-authors">
+            <div class="post-date">
+                    Published on 2022-09-16
+            </div>
+            <div class="post-authors">
+                
                     
-                        
-                        by
-                        
-
-                        
-
-                        
-                            <span style="color: var(--color-primary);">Saksham Alok</span>
-                        
-
-                        
-                </div>
-
-                <div class="tags-placeholder">
+                    by
                     
-                    <span class="tag">
-                        <a href="/tags/11ty.html">#11ty</a>
-                    </span>
-                    
-                    <span class="tag">
-                        <a href="/tags/WebDev.html">#WebDev</a>
-                    </span>
-                    
-                </div>
 
+                    
+
+                    
+                        <span style="color: var(--color-primary);">Saksham Alok</span>
+                    
+
+                    
             </div>
 
-            <div class="post-body">
-            <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
+            <div class="tags-placeholder">
+                
+                <span class="tag">
+                    <code><a href="/tags/11ty.html">#11ty</a></code>
+                </span>
+                
+                <span class="tag">
+                    <code><a href="/tags/WebDev.html">#WebDev</a></code>
+                </span>
+                
+            </div>
+
+        </div>
+
+        <div class="post-body">
+        <h1 id="table-of-contents">Table of Contents <a class="anchor" href="#table-of-contents">#</a></h1>
 <ul>
 <li>
 <a href="#begin-the-project">Begin the project</a></li>
@@ -301,10 +235,10 @@
 <li>Manually refresh and let Browsersync do the rest.</li>
 </ol>
 
-            </div>
+        </div>
 
-            </div>
-        </div>    
+        </div>
+        
 <footer>
     <p>Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> ❤️</p>
 </footer>

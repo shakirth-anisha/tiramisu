@@ -21,13 +21,20 @@ Date: 16th September, 2022
 Venue: Seminar Hall
 
 Why should you join it?
-👉 Beginner friendly
-👉 Covers a wide range of topics throughout the workshop, including Eleventy, HTML+CSS, and Netlify
-👉 Create your own website by the end of it!
-👉 Don’t miss the chance to flex the awesome technical skills you'll acquire!
-👉 If you’re in the 1st sem, gives a headstart on web development.
-👉 No entry fee!
-👉 Mentors will be present in case of any difficulty.
+
+- 👉 Beginner friendly
+
+- 👉 Covers a wide range of topics throughout the workshop, including Eleventy, HTML+CSS, and Netlify
+
+- 👉 Create your own website by the end of it!
+
+- 👉 Don’t miss the chance to flex the awesome technical skills you'll acquire!
+
+- 👉 If you’re in the 1st sem, gives a headstart on web development.
+
+- 👉 No entry fee!
+
+- 👉 Mentors will be present in case of any difficulty.
 
 [Click here for the pre-requisities!](https://saksham-11ty.netlify.app/posts/2022/prereqisite/)
 

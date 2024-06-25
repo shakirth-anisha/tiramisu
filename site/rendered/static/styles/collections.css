@@ -1,35 +1,57 @@
-.collections {
+.container {
+    /* background-color: beige; */
+
     display: flex;
+    /* justify-content: center; */
     flex-direction: column;
-    gap: 10px;
-    width: 100%;
 }
 
 .post-card {
-    padding: 0.5rem;
+    margin-inline: 5%;
+
+    /* background-color: rebeccapurple; */
+
     background-color: var(--color-background-dim);
-    color: var(--color-text);
-    border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
+    margin-bottom: 10px;
 
-    & > .post-card-title {
-        color: var(--color-heading);
-        font-size: 1.4rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+
+    transition: all 0.2s ease-in-out;
+
+    /* & > a { */
+        color: var(--color-text);
+        text-decoration: none;
+    /* } */
+
+    & > p {
+        font-size: 1rem;
     }
 
-    & > .post-card-description {
+    &:hover {
+        scale: 1.02;
+        z-index: 100;
+        box-shadow: 0 0 4px var(--inline-code-bg);
     }
 
-    & > .post-card-date {
+    &:active {
+        scale: 0.98;
     }
 }
 
-@media (max-width: 900px) {
-    .post-card {
-        margin-left: auto;
-        margin-right: auto;
-    }
+.post-card-title,
+.post-card-description,
+.post-card-date {
+    margin: 0;
+    padding: 0;
+}
+
+.post-card-title {
+    color: var(--color-heading);
+    font-size: 1.3rem;
+}
+
+.post-card-description, .post-card-date {
+    margin-top: 0.5rem;
 }
