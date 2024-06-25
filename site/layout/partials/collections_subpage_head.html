@@ -59,10 +59,11 @@ $PageData nil }} {{ $PageData = .TemplateData }} {{end}}
             };
         </script>
         {{ end }} {{range $PageData.Frontmatter.JSFiles}}
-        <script src="/script/{{.}}" defer></script>
+        <script src="/static/scripts/{{.}}" defer></script>
         {{end}} {{range .DeepDataMerge.LayoutConfig.SiteScripts}}
-        <script src="/script/{{.}}" defer></script>
+        <script src="/static/scripts/{{.}}" defer></script>
         {{end}}
+
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="{{ $PageData.Frontmatter.Title }}" />
@@ -82,7 +83,7 @@ $PageData nil }} {{ $PageData = .TemplateData }} {{end}}
 
         <script defer>
             hljs.highlightAll();
-            hljs.addPlugin(new CopyButtonPlugin());
+            // hljs.addPlugin(new CopyButtonPlugin());
         </script>
     </head>
     {{end}}

@@ -11,11 +11,14 @@
                 class="hsp-logo"
                 src="/static/images/hsplogo.png"
         /></a>
-        <div class="links">
+        <div id="links" class="links">
             {{range $index_no, $map := .DeepDataMerge.LayoutConfig.Navbar}}
             {{range $key, $value := $map }}
             <a class="navitem" href="{{ $value }}">{{ $key }}</a>
             {{ end }} {{end}}
+        </div>
+        <div id="menu_icon" class="closed">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
         </div>
     </nav>
 </header>

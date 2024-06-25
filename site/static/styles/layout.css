@@ -21,6 +21,7 @@ body {
     flex-grow: 1;
 }
 
+
 header,
 footer {
     margin: 1rem 0 1rem;
@@ -48,10 +49,15 @@ nav {
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     gap: 50px;
 }
+
+#menu_icon {
+    display: none;
+}
+
 
 .links {
     margin-left: auto;
@@ -60,10 +66,20 @@ nav {
     gap: 10px;
     flex-wrap: wrap;
     font-size: 1.1rem;
+
+    opacity: 1;
+
+    transition: all 300ms ease-in-out;
 }
 
 .links a {
     text-decoration: none;
+
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+        color: var(--color-heading);
+    }
 }
 
 .hsp-logo {
@@ -151,14 +167,20 @@ nav {
     }
 }
 
-@media (max-width: 900px) {
-    /*
-    .container {
-        padding: 0;
-        width: 100%;
+@media (min-width: 901px) {
+    .links {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        font-size: 1.1rem;
+        opacity: 1;
     }
- */
+}
+
+@media (max-width: 900px) {
     .container {
+        margin-top: 2rem;
         width: auto;
         margin-inline: 5%;
     }
@@ -166,5 +188,50 @@ nav {
     header {
         margin-inline: 5%;
         width: auto;
+    }
+
+    nav {
+
+    }
+
+    .hsp-logo {
+        position: absolute;
+        z-index: 1000;
+    }
+
+    #menu_icon {
+        display: block;
+        position: relative;
+        z-index: 100;
+        /* transform: translateX(70vh) translateY(25px); */
+
+        transform: translateY(20px);
+    }
+
+    .links {
+        position: absolute;
+        display: none;
+        opacity: 0;
+        z-index: -1;
+
+        right: 0;
+        left: 0;
+
+        bottom: 0;
+        top: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+        backdrop-filter: blur(20px);
+
+
+        & > a {
+            font-size: 2rem;
+            font-weight: 500;
+        }
     }
 }

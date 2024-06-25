@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://anirudhsudhir.github.io/test-hsp//sitemap.xml

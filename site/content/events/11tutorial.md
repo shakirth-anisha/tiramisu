@@ -57,14 +57,13 @@ The first change here is setting the input directory to src - as in, the directo
 2.  error message as no index file
 3.  Create index file
 
-    a. create src/
-
-    b. create src/index.md
+    1. create src/
+    2. create src/index.md
 
 # Create the base layout
 
 1.  create \_includes/base.njk inside src.
-2.  use the double-curly format to access the title Frontmatter variable, like so: {-{ title }} and in order to allow rendering of any HTML tags from the page content, we also use the built-in filter called safe which is added after placing a pipe - | - character.
+2.  use the double-curly format to access the title Frontmatter variable, like so: `{-{ title }}` and in order to allow rendering of any HTML tags from the page content, we also use the built-in filter called safe which is added after placing a pipe - | - character.
 3.
 
 ```html

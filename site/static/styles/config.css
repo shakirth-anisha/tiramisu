@@ -343,24 +343,28 @@ q {
 }
 
 pre code {
+    color: var(--color-heading);
     margin-top: 2rem;
     margin-bottom: 2rem;
 
-    font-family: Iosevka, monospace;
+    font-family: monospace;
     /* background: ; */
     overflow-x: scroll;
     scrollbar-width: none;
     border-radius: 8px;
+    font-size: 1.3rem;
 }
 
 pre > code {
+    color: var(--color-heading);
     display: block;
     text-indent: 0;
     white-space: inherit;
 }
 
 pre code.hljs {
-    font-family: Iosevka, monospace;
+    color: var(--color-heading);
+    font-family: monospace;
     font-variant-ligatures: common-ligatures;
     font-feature-settings: "liga" on;
     line-height: 1.3;

@@ -17,19 +17,12 @@ $PageData nil }} {{ $PageData = .TemplateData }} {{end}}
             as="style"
         />
 
-        <!-- External Stylesheets and Plugins -->
-        <!-- <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/tokyo-night-dark.min.css"
-        />
-
-        <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+        <!-- <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
         <link
             rel="stylesheet"
             href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css"
         /> -->
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
         <link
             href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css"
             rel="stylesheet"
@@ -52,9 +45,9 @@ $PageData nil }} {{ $PageData = .TemplateData }} {{end}}
             };
         </script>
         {{ end }} {{range $PageData.Frontmatter.JSFiles}}
-        <script src="/script/{{.}}" defer></script>
+        <script src="/static/scripts/{{.}}" defer></script>
         {{end}} {{range .DeepDataMerge.LayoutConfig.SiteScripts}}
-        <script src="/script/{{.}}" defer></script>
+        <script src="/static/scripts/{{.}}" defer></script>
         {{end}}
 
         <meta property="og:type" content="website" />
@@ -75,7 +68,7 @@ $PageData nil }} {{ $PageData = .TemplateData }} {{end}}
 
         <script defer>
             hljs.highlightAll();
-            hljs.addPlugin(new CopyButtonPlugin());
+            // hljs.addPlugin(new CopyButtonPlugin());
         </script>
     </head>
     {{end}}

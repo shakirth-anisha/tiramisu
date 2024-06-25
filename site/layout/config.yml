@@ -7,7 +7,7 @@ navbar:
   - about: /about.html
 baseURL: https://anirudhsudhir.github.io/test-hsp/
 siteTitle: "HSP"
-siteScripts:
+siteScripts: ["hamburger.js"]
 author: HSP
-themeURL: "/static/style.css"
+themeURL: "/static/default_imports.css"
 copyright: "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International."
