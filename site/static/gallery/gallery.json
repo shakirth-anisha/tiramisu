@@ -1,0 +1,16 @@
+{
+    "photos": [
+        {
+            "url": "/static/images/home.jpeg",
+            "description": "Meet and Greet 2023",
+            "author": "HSP",
+            "date": "2023-00-00"
+        },
+        {
+            "url": "/static/images/fosstalks.jpg",
+            "description": "Fosstalks",
+            "author": "Kshirin Shetty",
+            "date": "2024-04-02"
+        }
+    ]
+}
