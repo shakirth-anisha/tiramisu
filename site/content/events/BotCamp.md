@@ -1,6 +1,5 @@
 ---
 title: Bot-Camp
-type: post
 description: A Hands-on workshop to build your very first Telegram Bot!
 date: 2023-01-24
 tags: [Bot, Telegram, Homebrew]

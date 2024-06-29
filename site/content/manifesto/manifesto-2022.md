@@ -4,7 +4,6 @@ description: Our plans for the Academic Year 2022-2023
 date: 2022-08-08
 tags: [FOSS, Homebrew, tilde]
 collections: [manifesto]
-type: post
 layout: post
 ---
 

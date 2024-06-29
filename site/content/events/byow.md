@@ -1,6 +1,5 @@
 ---
 title: Build Your Own Website
-type: post
 description: A Hands-on workshop - Build your own website!
 date: 2022-09-14
 collections: [events]

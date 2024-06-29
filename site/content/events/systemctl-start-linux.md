@@ -1,6 +1,5 @@
 ---
 title: systemctl start linux
-type: post
 description: A Hands-on workshop on Linux and FOSS Software!
 date: 2022-04-07
 tags: [FOSS, Linux, Homebrew]

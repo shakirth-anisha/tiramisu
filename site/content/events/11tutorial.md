@@ -1,6 +1,5 @@
 ---
 title: Basic 11ty Tutorial
-type: post
 date: "2022-09-16"
 tags: [11ty, WebDev]
 collections: [events]

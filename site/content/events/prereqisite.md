@@ -1,6 +1,5 @@
 ---
 title: Prerequisite for the 11ty Workshop
-type: post
 date: "2022-09-14"
 tags: [11ty, WebDev]
 collections: [events]

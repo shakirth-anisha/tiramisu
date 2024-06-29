@@ -1,12 +1,11 @@
 ---
 title: home
-type: page
 layout: page
 ---
 
 <!--[image of us](/static/images/home.jpeg)-->
 
-<h1 style="margin-top: 0.4rem; font-size: 3.2rem; font-weight: 300;">HSPPESUECC</h1>
+<h1 style="margin-top: 0.4rem; font-family: Inter; font-size: 3.2rem; font-weight: 700;">HSP PESUECC</h1>
 
 <p style="margin-top: 0.4rem; font-size: 1.6rem; font-weight: 350; font-family: AzeretMono;"> Hackerspace PESUECC is a Student-Powered Developer Community located at PES University, Electronic City Campus.</p>
 

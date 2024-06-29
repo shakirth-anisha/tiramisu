@@ -5,7 +5,6 @@ tags: [manifesto, media]
 collections: [manifesto]
 description: Read on to know the declaration of our collective goals and aspirations for HSP in the year 2023.
 authors: ["Harini Anand"]
-type: post
 layout: post
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Golang 101
-type: post
 description: A hands-on workshop on using Golang
 date: 2022-09-23
 collections: [events]

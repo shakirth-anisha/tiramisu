@@ -19,6 +19,10 @@
         padding: 0;
     }
 
+    .post-card-description {
+        font-size: 0.9rem;
+    }
+
     & > p {
         font-size: 1rem;
         font-family: InterItalic, sans-serif;
@@ -26,5 +30,72 @@
 
     &:hover {
         border: 2px solid var(--color-primary);
+    }
+
+    & > a > img {
+        width: 35px;
+        height: 35px;
+        border-radius: 100px;
+    }
+}
+
+.members-collection {
+    margin-top: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.member-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: none;
+    margin-bottom: 0.5rem;
+
+    background-color: var(--color-background-dim);
+    border-radius: 8px;
+    padding: 0.8rem;
+
+    border: 2px solid var(--color-background-dim);
+
+    transition: all 150ms ease-in-out;
+
+    .post-card-title {
+        font-weight: 400;
+        font-size: 1.1rem;
+    }
+
+    .post-card-description {
+        font-size: 0.9rem;
+    }
+
+    & > * {
+        margin: 0;
+        padding: 0;
+    }
+
+    & > p {
+        font-size: 1rem;
+        font-family: InterItalic, sans-serif;
+    }
+
+    &:hover {
+        border: 2px solid var(--color-primary);
+    }
+
+    & > a > img {
+        width: 35px;
+        height: 35px;
+        border-radius: 100px;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .members-collection {
+        grid-template-columns: 1fr;
     }
 }

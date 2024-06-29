@@ -1,0 +1,76 @@
+{{ define "collection-subpage-mem"}}
+{{$PageData := index .DeepDataMerge.Collections .PageURL}}
+{{ template "collections_subpage_head" .}}
+
+<body>
+    {{template "header" .}}
+
+        <div class="container">
+
+                <!-- <script src="/static/scripts/core_members.js"></script> -->
+
+                <h2>HSP Core Team</h2>
+
+                {{$CollectionSet := index .DeepDataMerge.CollectionsMap .PageURL}}
+                <div id="core-cards">
+                    {{range $CollectionSet}}
+
+                    {{if strSliceContains .Frontmatter.Collections "core_team"}}
+                    <div class="core-card" href="/{{.CompleteURL}}">
+                        <div>
+                        <h3 class="post-card-title">{{.Frontmatter.Title}}</h3>
+                        <p class="post-card-description">{{.Frontmatter.Description}}</p>
+                        </div>
+
+                        {{ range $linkMap := .Frontmatter.CustomFields }}
+                            {{ range $namedURL, $URL := $linkMap }}
+                                {{if eq $namedURL "Github" }}
+                                <a href="{{$URL}}"><img src="{{$URL}}.png"></a >
+                                {{else}}
+                                {{end}}
+                            {{end}}
+                        {{end}}
+
+                    </div>
+                    {{else}}
+                    {{end}}
+
+                    {{end}}
+                </div>
+
+                <h2>HSP Members</h2>
+
+                <div class="members-collection">
+                {{range $CollectionSet }}
+
+                {{if not (strSliceContains .Frontmatter.Collections "core_team")}}
+
+                <div class="member-card" href="/{{.CompleteURL}}">
+                    <div>
+                    <h3 class="post-card-title">{{.Frontmatter.Title}}</h3>
+                    <p class="post-card-description">{{.Frontmatter.Description}}</p>
+                    </div>
+
+                    {{ range $linkMap := .Frontmatter.CustomFields }}
+                        {{ range $namedURL, $URL := $linkMap }}
+                            {{if eq $namedURL "Github" }}
+                            <a href="{{$URL}}"><img src="{{$URL}}.png"></a >
+                            {{else}}
+                            {{end}}
+                        {{end}}
+                    {{end}}
+
+                </div>
+
+                {{end}}
+
+                {{end}}
+                </div >
+        </div>
+
+    {{template "footer" .}}
+</body>
+
+</html>
+
+{{ end }}

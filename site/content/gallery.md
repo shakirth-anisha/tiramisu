@@ -1,6 +1,5 @@
 ---
 title: Gallery
-type: page
 layout: page
 scripts: ["gallery.js"]
 ---

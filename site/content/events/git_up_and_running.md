@@ -1,6 +1,5 @@
 ---
 title: "Git Up and Running"
-type: post
 date: "2023-02-06"
 tags: [git, introduction, github]
 collections: [events]

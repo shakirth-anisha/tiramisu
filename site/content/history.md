@@ -5,7 +5,6 @@ tags: []
 description:
 authors: ["Siddarth.D.Pai"]
 author_link: https://github.com/siddarthpai
-type: page
 layout: page
 ---
 

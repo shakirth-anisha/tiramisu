@@ -1,6 +1,5 @@
 ---
 title: "FOSS Meetup-June"
-type: post
 date: "2023-09-05"
 tags: [FOSS, FrontEnd]
 collections: [events]

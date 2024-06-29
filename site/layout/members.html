@@ -1,0 +1,17 @@
+{{ define "members" }}
+{{$PageData := index .DeepDataMerge.Collections .PageURL}}
+{{ template "members_header" .}}
+
+<body>
+    {{template "header" . }}
+
+        <div class="container">
+
+
+
+        </div>
+
+    {{ template "footer" . }}
+</body>
+
+{{ end }}
