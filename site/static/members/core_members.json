@@ -1,23 +1,74 @@
 {
     "Achyuth": {
-        "position": "Core Team Lead"
+        "position": "Core Team Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Shaatvika": {
-        "position": "Core Team Lead"
+        "position": "Core Team Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Shweta": {
-        "position": "Operations Lead"
+        "position": "Operations Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Reema": {
-        "position": "Design Lead"
+        "position": "Design Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Lakshitha": {
-        "position": "Design Lead"
+        "position": "Design Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Adhvaith": {
-        "position": "Marketing Lead"
+        "position": "Marketing Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
+    },
+    "Rithvik": {
+        "position": "Social Media Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     },
     "Sriprad": {
-        "position": "Mentor Lead"
+        "position": "Mentor Lead",
+        "image": "https://source.boringavatars.com/",
+        "links": {
+            "Github": "https://github.com/",
+            "Linkedin": "https://linkedin.com/in",
+            "Instagram": "https://instagram.com"
+        }
     }
 }

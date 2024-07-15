@@ -1,0 +1,53 @@
+{{ define "collection-subpage-members"}}
+{{$PageData := index .DeepDataMerge.Collections .PageURL}}
+{{ template "head_collections_subpage" .}}
+
+<body>
+    {{template "header" .}}
+
+        <div class="container">
+
+                <script src="/static/scripts/core_members.js"></script>
+
+                <h2>HSP Core Team</h2>
+
+                <div id="core-cards" class="members-collection"></div>
+
+                <h2>HSP Members</h2>
+
+                <div class="members-collection">
+
+                    {{$CollectionSet := index .DeepDataMerge.CollectionsMap .PageURL}}
+                    {{range $CollectionSet }}
+
+                    {{if not (strSliceContains .Frontmatter.Collections "core_team")}}
+
+                    <div class="member-card" href="/{{.CompleteURL}}">
+
+                        <img class="member-card-image" loading="lazy" src="{{.Frontmatter.PreviewImage}}">
+                        <h3 class="member-card-name">{{.Frontmatter.Title}}</h3>
+                        <p class="member-card-desc">{{.Frontmatter.Description}}</p>
+
+
+                        <div class="socials-links">
+                        {{ range $linkMap := .Frontmatter.CustomFields }}
+                            {{ range $namedURL, $URL := $linkMap }}
+                                <a href="{{$URL}}"><img class="social-links-icon"  src="/static/icons/{{$namedURL}}.svg"></a >
+                            {{end}}
+                        {{end}}
+                        </div>
+
+                    </div>
+
+                    {{end}}
+
+                    {{end}}
+                </div >
+        </div>
+
+    {{template "footer" .}}
+</body>
+
+</html>
+
+{{ end }}

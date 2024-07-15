@@ -6,6 +6,7 @@ collections: [events]
 description: Let's Learn about Git and Github!
 authors: ["Anirudh Rowjee"]
 author_link: https://rowjee.com
+previewimage: https://i.imgur.com/VkoYIM5.png
 layout: post
 ---
 

@@ -7,6 +7,7 @@ description: A brief blog on what went down at Geeky Ants!
 authors: ["Siddarth.D.Pai", "Nishtha P"]
 author_link: https://github.com/nishtha981
 layout: post
+previewimage: https://i.imgur.com/XbBy5gP.png
 ---
 
 On July 1, 2023, we attended FOSS United Bangalore's first-ever themed meetup! It was a whole day dedicated to Frontend! It was our first time attending a FOSS meetup and we're looking forward to attending many more! There were three talks on different areas of Frontend Development and a panel discussion on Cybersecurity which covered various important aspects of the domain with the valuable opinions of industry experts.

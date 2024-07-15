@@ -1,0 +1,30 @@
+{{ define "page"}}
+{{$PageData := index .DeepDataMerge.Templates .PageURL}}
+{{ template "head_regular" .}}
+
+<body>
+
+    <!-- this is the header -->
+    {{template "header" .}}
+
+        <div class="container">
+
+            {{ if eq $PageData.Frontmatter.Title "home" }}
+            {{else}}
+            <div class="post-description">
+                <h1>{{ $PageData.Frontmatter.Title }}</h1>
+            </div>
+            {{end}}
+
+            <!-- this is the body -->
+            {{$PageData.Body}}
+
+        </div>
+
+    {{template "footer" .}}
+
+</body>
+
+</html>
+
+{{ end}}

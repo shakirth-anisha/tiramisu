@@ -1,6 +1,6 @@
 {{ define "all-tags"}}
 {{$PageData := .TemplateData}}
-{{ template "head" .}}
+{{ template "head_regular" .}}
 
 <body>
 {{template "header" .}}
@@ -15,10 +15,6 @@
             </section>
         </article>
     </div>
-
-    <div id="chart"></div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="/static/scripts/graph.js"></script>
 
     {{template "footer" .}}
 

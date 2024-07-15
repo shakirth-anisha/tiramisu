@@ -3,6 +3,7 @@ title: Golang 101
 description: A hands-on workshop on using Golang
 date: 2022-09-23
 collections: [events]
+previewimage: https://i.imgur.com/0MWLK9F.png
 layout: post
 ---
 

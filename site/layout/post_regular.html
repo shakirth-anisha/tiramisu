@@ -1,0 +1,60 @@
+{{ define "post"}}
+{{$PageData := index .DeepDataMerge.Templates .PageURL}}
+{{ template "head_post" .}}
+
+<body>
+
+    {{template "header" .}}
+
+        <div class="container">
+
+        <div class="post-description">
+            <h1>{{ $PageData.Frontmatter.Title }}</h1>
+
+            <div class="post-date">
+                    Published on {{$PageData.Frontmatter.Date}}
+            </div>
+            <div class="post-authors">
+                <!-- Adding 'by' if author field contains entries -->
+                    {{ if eq (len $PageData.Frontmatter.Authors) 0 }}
+                    {{else}}
+                    by
+                    {{end}}
+
+                    {{ if eq (len $PageData.Frontmatter.Authors) 1 }}
+
+                    {{range $PageData.Frontmatter.Authors }}
+                        <span style="color: var(--color-primary);">{{ . }}</span>
+                    {{ end }}
+
+                    {{ else }}
+
+                    {{range $PageData.Frontmatter.Authors }}
+                    <span style="color: var(--color-primary);">{{ . }}</span> |
+                    {{ end }}
+
+                    {{ end }}
+            </div>
+
+            <div class="tags-placeholder">
+                {{range $PageData.Frontmatter.Tags}}
+                <span class="tag">
+                    <code><a href="/tags/{{.}}.html">#{{.}}</a></code>
+                </span>
+                {{end}}
+            </div>
+
+        </div>
+
+        <div class="post-body">
+        {{$PageData.Body}}
+        </div>
+
+        </div>
+        {{template "footer" .}}
+
+</body>
+
+</html>
+
+{{ end}}

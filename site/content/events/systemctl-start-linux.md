@@ -4,6 +4,7 @@ description: A Hands-on workshop on Linux and FOSS Software!
 date: 2022-04-07
 tags: [FOSS, Linux, Homebrew]
 collections: [events]
+previewimage: https://i.imgur.com/G4F614q.png
 layout: post
 ---
 

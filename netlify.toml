@@ -1,0 +1,9 @@
+[build]
+base  = "/"
+publish = "site/rendered"
+command = "chmod +x build.sh;./build.sh"
+
+# [[redirects]]
+# from = "/*"
+# to = "/404.html"
+# status = 404

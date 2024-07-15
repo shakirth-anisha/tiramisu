@@ -1,0 +1,56 @@
+.events-collection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.events-card {
+    text-decoration: none;
+    color: var(--color-text);
+    width: 300px;
+    background-color: var(--color-background-dim);
+    border-radius: 8px;
+    padding: 10px;
+
+    transition: scale 150ms ease-in-out;
+    &:hover {
+        scale: 1.01;
+    }
+}
+
+.event-card-image {
+    width: inherit;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.event-card-title,
+.event-card-desc,
+.event-card-date {
+    margin: 0;
+    padding: 0;
+}
+
+.event-card-title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.event-card-desc,
+.event-card-date {
+    font-size: 0.95rem;
+}
+
+@media (max-width: 800px) {
+    .events-card {
+        /* width: 100vh; */
+        width: 70vw;
+        /* min-width: 85vh; */
+        /* width: 10rem; */
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        height: min-content;
+    }
+}

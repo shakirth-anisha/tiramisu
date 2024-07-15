@@ -4,6 +4,7 @@ description: A Hands-on workshop - Build your own website!
 date: 2022-09-14
 collections: [events]
 layout: post
+previewimage: https://i.imgur.com/Q0aLUx0.png
 ---
 
 <section class="p-index_links_link">

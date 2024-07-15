@@ -1,0 +1,11 @@
+.img-grid {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
+    gap: 10px; */
+    columns: 2;
+    & > figure > img {
+        margin-bottom: 10px;
+        border-radius: 0;
+    }
+}

@@ -1,0 +1,24 @@
+{{ define "tag-subpage"}}
+{{$PageData := index .DeepDataMerge.Tags .PageURL}}
+{{ template "head_collections_subpage" .}}
+
+<body>
+    {{template "header" .}}
+
+    <div class="container">
+        {{$TagSet := index .DeepDataMerge.TagsMap .PageURL}}
+        {{range $TagSet }}
+        <a class="post-card" href="/{{.CompleteURL}}">
+            <h3 class="post-card-title">{{.Frontmatter.Title}}</h3>
+            <p class="post-card-description">{{.Frontmatter.Title}}</p>
+            <p class="post-card-date">{{.Frontmatter.Date}}</p>
+        </a>
+        {{end}}
+    </div>
+
+    {{template "footer" .}}
+</body>
+
+</html>
+
+{{ end}}

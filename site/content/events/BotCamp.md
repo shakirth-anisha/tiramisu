@@ -5,6 +5,7 @@ date: 2023-01-24
 tags: [Bot, Telegram, Homebrew]
 collections: [events]
 layout: post
+previewimage: https://i.imgur.com/tju0rLE.png
 ---
 
 <section class="p-index_links_link">
