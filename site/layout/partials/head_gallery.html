@@ -2,8 +2,20 @@
 
 {{template "head_common" .}}
 
-<script defer src="/static/scripts/viewer.js"></script>
-
+<!-- <script src="/static/scripts/gallery.js"></script>
+<script defer src="/static/scripts/viewer.js"></script> -->
+<script defer>
+function loadViewer() {
+    console.log("loaded images");
+    fetch('/static/scripts/viewer.js')
+        .then(response => response.text())
+        .then(scriptContent => {
+            eval(scriptContent);
+        })
+        .catch(error => console.error('Error loading viewer.js:', error));
+}
+</script>
+<script defer src="/static/scripts/gallery.js" onload="loadViewer()"></script>
 </head>
 
 {{end}}

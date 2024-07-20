@@ -179,6 +179,7 @@ nav {
 }
 
 @media (max-width: 900px) {
+
     .container {
         margin-top: 2rem;
         width: auto;

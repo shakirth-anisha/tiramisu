@@ -135,7 +135,7 @@ h6 {
 }
 
 h1 {
-    font-size: 2.3rem;
+    font-size: 2rem;
     /* margin-top: 3rem; */
     /* margin-bottom: 0.4rem; */
 }
@@ -191,6 +191,12 @@ p {
     margin-bottom 0.4rem; */
     font-size: 1.2rem;
     line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    p {
+        font-size: 1.1rem;
+    }
 }
 
 a {
@@ -402,3 +408,44 @@ a > code {
     border-radius: 4px;
     font-size: 0.9rem;
 }
+
+/* details {
+    /*margin-top: 1rem;*/
+    color: var(--color-subheading);
+    font-size: 0.95rem;
+    font-family: Inter, sans-serif;
+    font-weight: 550;
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition:
+        padding 300ms ease-in-out,
+        background-color 300ms ease-in-out;
+
+    & > ul,
+    & > ol {
+        font-weight: 350;
+        font-size: 1rem;
+        /* margin-left: 2rem; */
+    }
+}
+
+sumamry {
+    color: var(--color-heading);
+    font-weight: 500;
+    opacity: 1;
+    font-size: 1.5rem;
+}
+
+details > img {
+    width: 70%;
+}
+
+details {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+details > details {
+    margin-left: 1rem;
+} */
