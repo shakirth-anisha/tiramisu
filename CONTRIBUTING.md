@@ -47,7 +47,7 @@ layout: design
 
 // snip of a blog
 
-<div class="img-gird">
+<div class="img-grid">
 
 ![alt text for image - necessary](path_to_image)
 
