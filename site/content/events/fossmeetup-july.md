@@ -1,6 +1,6 @@
 ---
 title: "FOSS Meetup-June"
-date: "2023-09-05"
+date: "2023-05-01"
 tags: [FOSS, FrontEnd]
 collections: [events]
 description: A brief blog on what went down at Geeky Ants!
