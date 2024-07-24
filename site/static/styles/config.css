@@ -21,7 +21,12 @@
     }
 } */
 
-@media (prefers-color-scheme: light) {
+:root {
+    /* dimensions */
+    --body-width: 45rem;
+}
+
+/* @media (prefers-color-scheme: light) {
     :root {
         --color-heading: #000000;
         --color-subheading: #606060;
@@ -40,10 +45,8 @@
         --color-primary-dim: #00fb6b7f;
         --inline-code-bg: #f9f8f9;
 
-        /* dimensions */
-        --body-width: 45rem;
     }
-}
+} */
 
 @media (prefers-color-scheme: dark) {
     :root {
