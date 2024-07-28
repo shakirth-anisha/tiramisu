@@ -55,6 +55,7 @@ nav {
 
 #menu_icon {
     display: none;
+    scale: 1.2;
 }
 
 .links {

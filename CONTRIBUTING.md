@@ -1,30 +1,56 @@
-# Contribution to tiramisu
+# Contributing to the HSP site
 
-*table of contents*
+_table of contents_
 
-* [Guide to Contribution](#guide-to-contribution)
-    * [Git Commit Message Guidelines]()
-    * [Guide for design posts]()
-    * [Guide for memebrs list]()
-* [Installation Guidelines](#installation-guidelines)
-    * [Using the pre-built binaries](#using-the-pre-built-binaries)
-    * [Installation from Source](#installation-from-source)
-    * [Installation using Homebrew](#installation-using-homebrew)
+* [Contribution Guide](#contribution-guide)
+    * [Git Commit Message Guidelines](#git-commit-message-guidelines)
+    * [Guide for design posts](#guide-for-design-posts)
+    * [Guide for members list](#guide-for-members-list)
 
-## Guide to Contribution
+## Contribution Guide
 
-To make yourselves familiar with the [static site generator](https://en.wikipedia.org/wiki/Static_site_generator), while working with layouts, we recommend you to go through the in-detail [documentation](https://anna-docs.netlify.app/docs). The installation instructions can be found below
+To make yourselves familiar with the [static site generator](https://en.wikipedia.org/wiki/Static_site_generator),
+while working with layouts, we recommend going through the [documentation](https://anna-docs.netlify.app/docs).
+
+Posts can be written normally in accordance to the CommonMark markdown specifications found [here](http://commonmark.org)
+
+> A guide to install and use "anna", the custom static-site generator used to build this site, can be found [here](https://anna-docs.netlify.app/quick-start).
+
+Before getting started, you need git ssh setup on your system. You will need to generate an ssh key which you can find [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by following the necessary steps mentioned. After this you will need to [add the new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) to your github account. To test the setup, run the following command
+
+```sh
+ssh -T git@github.com
+```
+
+You will be given a prompt similar to what is given below
+
+```
+> The authenticity of host 'github.com (IP ADDRESS)' can't be established.
+> ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+> Are you sure you want to continue connecting (yes/no)? yes
+```
+
+This message below confirms the setup
+```
+> Hi USERNAME! You've successfully authenticated, but GitHub does not
+> provide shell access.
+```
+
+---
 
 ### Git Commit Message Guidelines
 
-Refer to the following [article](https://www.conventionalcommits.org/en/v1.0.0/) regarding writing conventional git commit messages, to make it easier for the maintainers to understand the PR's and progress.
+Refer to the following [article](https://www.conventionalcommits.org/en/v1.0.0/) regarding writing conventional git commit messages
+to make it easier for the maintainers to understand the PRs and progress.
+
+---
 
 ### Guide for design posts
 
 > This is only for HSP Members
 
-- Any small writeup on the inspirations, thought process behind the desings would be appreciated
-- Design posts can be added under `site/content/design/EVENT_NAME.md` and must follow the following frontmatter
+-   Any small writeup on the inspiration, thought process behind the designs would be appreciated
+-   Design posts can be added under `site/content/design/EVENT_NAME.md` and must follow the following frontmatter template
 
 ```yaml
 ---
@@ -39,12 +65,10 @@ layout: design
 ---
 ```
 
-- Posts can be written normally in accordance to the common markdown specifications that can be found [here](http://commonmark.org)
-
-- Inorder to include *grid based images* similar to what is on display in the `/gallery` page of the site, place all images inside a div in the markdown file as follows
+-   Inorder to include _grid based images_ similar to what is on display in the `/gallery` page of the site,
+    place all images inside a div in the markdown file as follows
 
 ```md
-
 // snip of a blog
 
 <div class="img-grid">
@@ -60,13 +84,13 @@ layout: design
 
 > Do keep in mind the mandatory spaces between each of the image lines!
 
+---
 
+### Guide for members list
 
-### Guide for memebrs list
+> This is only for HSP Members
 
->  This is only for HSP Members
-
-To add your name to the list of members part of the club, follow the steps
+To add your name to the list of members section of the site, follow these steps
 
 1. Add a `markdown` file to `site/content/members`. For example
 
@@ -90,53 +114,6 @@ customFields:
 
 **Note**
 
-`SocialsName` could either be `Linkedin`, `Github`, `Instagram`, `X`, etc. If you would like to link any other social account, add the key name, and also save an svg of the icon to that social provider at `/static/icons/SocialsName.svg`, otherwise there wouldn't be any icons available to display.
-
-
----
-
-## Installation Guidelines
-
-To get started with contributing to this repo, you will require the binaries for `anna` (release 3.0):
-
-### From anna binaries
-
-Download the binaries from: https://github.com/anna-ssg/anna/releases/tag/v3.0.0. For example
-
-```sh
-curl -L https://github.com/anna-ssg/anna/releases/download/v3.0.0/anna_Linux_x86_64.tar.gz > anna_Linux_x86.tar.gz
-```
-
-Extract the binaries and add the executable to path
-
-```sh
-tar -xvzf anna_Linux_x86.tar.gz
-./anna -h
-```
-
-### Build anna from source
-
-To build from source, you will need to have [Go lang](https://go.dev/) installed. clone the `anna-ssg` available at https://github.com/anna-ssg/anna.git.
-
-```sh
-git clone --depth=1 https://github.com/anna-ssg/anna.git
-cd anna
-# Install the dependencies
-go install
-# Build with the Makefile
-make
-```
-
-This builds the SSG and also creates a sample rendered directory, which isn't the requirement. You can use this binary by adding it to your path and using it in the same directory as this repository.
-
-### Installing anna with Homebrew
-
-Anna-ssg provides hombrew taps for MacOS systems as of now. To install, run the following commands
-
-```sh
-brew tap anna/anna-ssg
-brew install anna
-
-# To run anna
-anna -h
-```
+`SocialsName` could either be `Linkedin`, `Github`, `Instagram`, `X`, etc. If you would like to link any other social account,
+add the key name, and also save an svg of the icon to that social provider at `/static/icons/SocialsName.svg`,
+otherwise there wouldn't be any icons available to display.
