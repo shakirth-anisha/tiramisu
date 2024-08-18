@@ -136,17 +136,22 @@ nav {
     position: absolute;
 }
 
+.home-featured {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
 .home-nav {
     margin-top: 2rem;
     margin-bottom: 1.5rem;
 
-    & > p > a {
+    &>p>a {
         color: var(--color-heading);
 
         text-decoration: none;
     }
 
-    & > p {
+    &>p {
         margin: 0;
 
         margin-top: 0.8rem;
@@ -159,7 +164,7 @@ nav {
         border-radius: 8px;
     }
 
-    & > p:hover {
+    &>p:hover {
         scale: 1.02;
 
         border: 2px var(--color-primary) solid;
@@ -189,8 +194,7 @@ nav {
         width: auto;
     }
 
-    nav {
-    }
+    nav {}
 
     .hsp-logo {
         position: absolute;
@@ -223,7 +227,7 @@ nav {
 
         flex-direction: column;
 
-        & > a {
+        &>a {
             font-size: 2rem;
             font-weight: 500;
         }
