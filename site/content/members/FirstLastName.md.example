@@ -1,0 +1,9 @@
+---
+title: Your Name
+draft: "true"
+description: Member
+collections: ["members>2025"]
+tags: ["mentor", "design"]
+customFields:
+    - Github: https://github.com/username
+---
