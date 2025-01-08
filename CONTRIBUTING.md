@@ -1,47 +1,80 @@
 # Contributing to the HSP site
 
-_table of contents_
-
 * [Contribution Guide](#contribution-guide)
     * [Git Commit Message Guidelines](#git-commit-message-guidelines)
-    * [Guide for design posts](#guide-for-design-posts)
     * [Guide for members list](#guide-for-members-list)
+    * [Guide for design posts](#guide-for-design-posts)
+
 
 ## Contribution Guide
 
 To make yourselves familiar with the [static site generator](https://en.wikipedia.org/wiki/Static_site_generator),
-while working with layouts, we recommend going through the [documentation](https://anna-docs.netlify.app/docs).
-
-Posts can be written normally in accordance to the CommonMark markdown specifications found [here](http://commonmark.org)
+while working with layouts, we recommend going through the [documentation](https://anna-docs.netlify.app/docs)
 
 > A guide to install and use "anna", the custom static-site generator used to build this site, can be found [here](https://anna-docs.netlify.app/quick-start).
 
-Before getting started, you need git ssh setup on your system. You will need to generate an ssh key which you can find [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by following the necessary steps mentioned. After this you will need to [add the new ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) to your github account. To test the setup, run the following command
+## Setting up Git
 
-```sh
-ssh -T git@github.com
-```
+> Skip this if you know how to clone and push to GitHub
 
-You will be given a prompt similar to what is given below
+The easiest way to setup git and ssh is to use the official `gh-cli` app
 
-```
-> The authenticity of host 'github.com (IP ADDRESS)' can't be established.
-> ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
-> Are you sure you want to continue connecting (yes/no)? yes
-```
+1. Sign up for a GitHub account.
+2. Install the cli app from: [here](http://github.com/cli/cli#installation)
+3. Open your terminal and run: `gh auth login` to login to your GitHub account
+4. Follow the prompts. Select `SSH` as the preferred option and let it generate an SSH key.
+6. Visit: https://github.com/homebrew-ec-foss/tiramisu/ and fork this repo
+5. To test, clone the forked repo using `gh repo clone yourusername/tiramisu`
 
-This message below confirms the setup
-```
-> Hi USERNAME! You've successfully authenticated, but GitHub does not
-> provide shell access.
-```
 
 ---
 
 ### Git Commit Message Guidelines
 
-Refer to the following [article](https://www.conventionalcommits.org/en/v1.0.0/) regarding writing conventional git commit messages
-to make it easier for the maintainers to understand the PRs and progress.
+Refer to the following
+[article](https://www.conventionalcommits.org/en/v1.0.0/) regarding writing
+conventional git commit messages to make it easier for the maintainers to
+understand the PRs and progress.
+
+Posts can be written normally in markdown
+to the CommonMark markdown specifications
+found [here](http://commonmark.org)
+
+---
+
+### Guide for members list
+
+> This is only for HSP Members
+
+To add your name to the list of members section of the site, follow these steps
+
+Make a copy of the sample `FirstLastName.md.example` `markdown` file to
+`site/content/members`.
+
+For example:
+
+```yaml
+---
+title: Your Name
+draft: "false"
+description: Member
+collections: ["members>2025"]
+tags: ["mentor", "design"]
+customFields:
+    - Github: https://github.com/username
+---
+```
+
+> Make sure you change draft to "false" before commiting to see changes.
+
+**Note**
+
+`SocialsName` could either be `Linkedin`, `Github`, `Instagram`, `X`, etc. If
+you would like to link any other social account, add the key name, and also
+save an svg of the icon to that social provider at `/static/icons/SocialsName.svg`,
+otherwise there wouldn't be any icons available to display.
+
+Feel free to look at the other member's .md posts for ref.
 
 ---
 
@@ -83,37 +116,3 @@ layout: design
 ```
 
 > Do keep in mind the mandatory spaces between each of the image lines!
-
----
-
-### Guide for members list
-
-> This is only for HSP Members
-
-To add your name to the list of members section of the site, follow these steps
-
-1. Add a `markdown` file to `site/content/members`. For example
-
-```sh
-touch site/content/members/YOURNAME.md
-```
-
-2. Add a frontmatter to the markdown file
-
-```yaml
----
-title: YOUR NAME
-description: TEAM NAME
-collections: ["members>YEAR", ...]
-previewimage: url_to_your_image
-customFields:
-    - SocialsName: url_to_your_profile
-    - ...
----
-```
-
-**Note**
-
-`SocialsName` could either be `Linkedin`, `Github`, `Instagram`, `X`, etc. If you would like to link any other social account,
-add the key name, and also save an svg of the icon to that social provider at `/static/icons/SocialsName.svg`,
-otherwise there wouldn't be any icons available to display.

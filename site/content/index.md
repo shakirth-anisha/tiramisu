@@ -25,6 +25,6 @@ The club was started in 2021, with a founding team of five people. Presently, th
 
 ## Featured
 
-  <div class="home-featured">
-            <iframe src="/collections/featured.html"></iframe>
-  </div>
+<div class="home-featured" style="margin: 0; padding: 0px; width: 100%; height: auto;">
+  <iframe src="/collections/featured.html" class="featured-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+</div>

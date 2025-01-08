@@ -2,7 +2,7 @@
 title: git up
 date: "2024-08-18"
 collections: [featured]
-previewimage: https://yewtu.be/vi/raQrUlURXEc/maxres.jpg
+previewimage: https://img.youtube.com/vi/raQrUlURXEc/maxresdefault.jpg
 layout: featured
 ---
 
