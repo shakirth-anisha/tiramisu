@@ -1,6 +1,5 @@
 ---
 title: Sriprad Potukuchi
-draft: "true"
 description: Mentor Team Lead
 collections: ["members>2022","members>2023","members>2024","core_team"]
 tags: ["mentor","core"]

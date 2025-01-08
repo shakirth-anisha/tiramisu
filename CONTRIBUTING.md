@@ -56,17 +56,13 @@ For example:
 ```yaml
 ---
 title: Your Name
-draft: "false"
 description: Member
-collections: ["members>2025"]
-tags: ["mentor", "design"]
+collections: ["members>2025", "design_team"]
+tags: ["design"]
 customFields:
     - Github: https://github.com/username
 ---
 ```
-
-> Make sure you change draft to "false" before commiting to see changes.
-
 **Note**
 
 `SocialsName` could either be `Linkedin`, `Github`, `Instagram`, `X`, etc. If
@@ -74,7 +70,7 @@ you would like to link any other social account, add the key name, and also
 save an svg of the icon to that social provider at `/static/icons/SocialsName.svg`,
 otherwise there wouldn't be any icons available to display.
 
-Feel free to look at the other member's .md posts for ref.
+Feel free to look at the other member's `.md` posts for ref.
 
 ---
 

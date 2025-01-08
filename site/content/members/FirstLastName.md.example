@@ -1,9 +1,8 @@
 ---
 title: Your Name
-draft: "true"
 description: Member
-collections: ["members>2025"]
-tags: ["mentor", "design"]
+collections: ["members>2025", "design_team"]
+tags: ["design"]
 customFields:
     - Github: https://github.com/username
 ---

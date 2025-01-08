@@ -1,6 +1,5 @@
 ---
 title: Mebin Thattil
-draft: "false"
 description: Mentor Team
 collections: ["members>2025","mentor_team"]
 tags: ["mentor"]
