@@ -15,16 +15,18 @@ The club was started in 2021, with a founding team of five people. Presently, th
 
 [Homebrew FOSS by HSP PESUECC](https://homebrew.hsp-ec.xyz/)
 
-[Hackerspace Discord](https://discord.com/invite/9m7ad5mDVK)
-
 [Instagram](https://www.instagram.com/hsp.pesuecc/)
 
-[Youtube](https://www.youtube.com/channel/UCtFFsoFIBV0udCCf6ryNFAQ)
+[YouTube](https://www.youtube.com/channel/UCtFFsoFIBV0udCCf6ryNFAQ)
 
 </div>
 
 ## Featured
 
-<div class="home-featured" style="margin: 0; padding: 0px; width: 100%; height: auto;">
-  <iframe src="/collections/featured.html" class="featured-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+<div class="home-featured" style="margin: 30px 0; padding: 0; width: 100%; height: auto;">
+  <iframe 
+    src="/collections/featured.html" 
+    class="featured-iframe" 
+    style="width: 100%; height: 100%; border: none; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth;">
+  </iframe>
 </div>
