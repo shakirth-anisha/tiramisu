@@ -1,76 +1,76 @@
 {
-    "Achyuth": {
-        "position": "Core Team Lead",
-        "image": "https://i.ibb.co/RYSkgrw/5ridjq.webp",
-        "links": {
-            "Github": "https://github.com/achyuthcodes30",
-            "Linkedin": "https://linkedin.com/in/achyuthyogeshsosale",
-            "Instagram": "https://www.instagram.com/_.the.ac/",
-            "X": "https://x.com/AchyuthYS",
-            "Email": "mailto:achyuthyogesh0@gmail.com"
-        }
-    },
-    "Shaatvika": {
-        "position": "Core Team Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Shweta": {
-        "position": "Operations Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Reema": {
-        "position": "Design Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Lakshitha": {
-        "position": "Design Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Adhvaith": {
-        "position": "Marketing Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Rithvik": {
-        "position": "Social Media Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
-    },
-    "Sriprad": {
-        "position": "Mentor Lead",
-        "image": "https://source.boringavatars.com/",
-        "links": {
-            "Github": "https://github.com/",
-            "Linkedin": "https://linkedin.com/in",
-            "Instagram": "https://instagram.com"
-        }
+  "Achyuth": {
+    "position": "Core Team Lead",
+    "image": "https://i.ibb.co/RYSkgrw/5ridjq.webp",
+    "links": {
+      "Github": "https://github.com/achyuthcodes30",
+      "Linkedin": "https://linkedin.com/in/achyuthyogeshsosale",
+      "Instagram": "https://www.instagram.com/_.the.ac/",
+      "X": "https://x.com/AchyuthYS",
+      "Email": "mailto:achyuthyogesh0@gmail.com"
     }
+  },
+  "Shaatvika": {
+    "position": "Core Team Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Shweta": {
+    "position": "Operations Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Reema": {
+    "position": "Design Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Lakshitha": {
+    "position": "Design Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Adhvaith": {
+    "position": "Marketing Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Rithvik": {
+    "position": "Social Media Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  },
+  "Sriprad": {
+    "position": "Mentor Lead",
+    "image": "https://api.dicebear.com/9.x/glass/svg/",
+    "links": {
+      "Github": "https://github.com/",
+      "Linkedin": "https://linkedin.com/in",
+      "Instagram": "https://instagram.com"
+    }
+  }
 }

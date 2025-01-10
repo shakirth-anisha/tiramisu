@@ -1,7 +1,7 @@
 ---
 title: Suhas Jaladi
 description: Member
-collections: ["members>2024","marketing_team"]
+collections: ["members>2024", "marketing_team"]
 tags: ["marketing"]
 previewimage: /static/images/members/JaladiSuhas.jpg
 customFields:
