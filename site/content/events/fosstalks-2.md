@@ -11,13 +11,13 @@ layout: page
 
 > Apply to Speak at FOSS Talks 2.0
 
-Comment here, with your proposal, for us to triage it.
+Comment here, with your proposal, for us to triage it. Checkout an [example](https://github.com/homebrew-ec-foss/tiramisu/discussions/43).
 
 <script src="https://giscus.app/client.js"
-        data-repo="homebrew-ec-foss/cfp-test"
-        data-repo-id="R_kgDONpQmng"
+        data-repo="homebrew-ec-foss/tiramisu"
+        data-repo-id="R_kgDOMNKKDw"
         data-mapping="number"
-        data-term="5"
+        data-term="43"
         data-emit-metadata="0"
         data-reactions-enabled="0"
         data-theme="preferred_color_scheme"
